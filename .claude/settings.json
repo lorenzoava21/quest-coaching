@@ -1,0 +1,25 @@
+{
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(*)",
+      "WebSearch",
+      "WebFetch",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(sort:*)",
+      "Bash(grep:*)",
+      "Bash(echo:*)",
+      "Bash(wc:*)",
+      "Bash(tail:*)",
+      "Bash(cd:*)",
+      "Bash(open:*)",
+      "Bash(python3:*)",
+      "Bash(pip3:*)",
+      "Bash(source:*)",
+      "Bash(export:*)"
+    ]
+  }
+}

@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quest Coaching v2.0 — Scheda Personaggio</title>
+<style>
+  /* ===== RESET & BASE ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1a2332;
+    --charcoal: #2c3e50;
+    --charcoal-light: #3d5166;
+    --gold: #c8973e;
+    --gold-light: #dbb06b;
+    --gold-pale: #f0ddb8;
+    --cream: #faf6ef;
+    --cream-dark: #f0ead8;
+    --ink: #1a1a1a;
+    --ink-light: #4a4a4a;
+    --border: #c8c0b0;
+    --dotted: #b0a898;
+  }
+
+  html { font-size: 10px; }
+
+  body {
+    font-family: -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    color: var(--ink);
+    background: #e8e4dc;
+  }
+
+  /* ===== PAGE STRUCTURE ===== */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--cream);
+    margin: 10mm auto;
+    padding: 12mm 14mm 10mm 14mm;
+    position: relative;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--navy), var(--gold), var(--navy));
+  }
+
+  /* ===== COMPASS DECORATIVE ELEMENT ===== */
+  .compass {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    height: 220px;
+    opacity: 0.028;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .compass::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 180px; height: 180px;
+    border: 2px solid var(--navy);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .compass::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 140px; height: 140px;
+    border: 1px solid var(--navy);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .compass-needle {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .compass-needle::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: -1.5px;
+    width: 0; height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 80px solid var(--navy);
+  }
+  .compass-needle::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -1.5px;
+    width: 0; height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 80px solid var(--charcoal);
+  }
+  .compass-n, .compass-s, .compass-e, .compass-w {
+    position: absolute;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--navy);
+  }
+  .compass-n { top: 2px; left: 50%; transform: translateX(-50%); }
+  .compass-s { bottom: 2px; left: 50%; transform: translateX(-50%); }
+  .compass-e { top: 50%; right: 2px; transform: translateY(-50%); }
+  .compass-w { top: 50%; left: 6px; transform: translateY(-50%); }
+
+  /* ===== HEADER ===== */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--navy);
+    margin-bottom: 6mm;
+    position: relative;
+    z-index: 1;
+  }
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo-placeholder {
+    width: 36px;
+    height: 36px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .logo-placeholder::before {
+    content: '';
+    width: 0; height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 10px solid var(--gold);
+    position: absolute;
+    top: 8px;
+  }
+  .logo-placeholder::after {
+    content: '';
+    width: 4px; height: 4px;
+    background: var(--gold);
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+  }
+
+  .header-title {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--navy);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .header-subtitle {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.15rem;
+    color: var(--gold);
+    font-style: italic;
+    letter-spacing: 0.03em;
+  }
+
+  .header-version {
+    font-size: 0.95rem;
+    color: var(--charcoal-light);
+    text-align: right;
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+
+  /* ===== PERSONAL INFO BAR ===== */
+  .info-bar {
+    display: grid;
+    grid-template-columns: 2fr 1fr 0.7fr 1fr;
+    gap: 8px;
+    margin-bottom: 5mm;
+    position: relative;
+    z-index: 1;
+  }
+
+  .info-field {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+
+  .info-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .info-value {
+    flex: 1;
+    border-bottom: 1.5px dotted var(--dotted);
+    min-height: 18px;
+    font-size: 1.05rem;
+    padding-bottom: 1px;
+  }
+
+  /* ===== SECTION TITLES ===== */
+  .section-title {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--cream);
+    background: linear-gradient(135deg, var(--navy), var(--charcoal));
+    padding: 3px 10px;
+    margin-bottom: 3mm;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+  }
+  .section-title::after {
+    content: '';
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--gold);
+  }
+
+  .section-hint {
+    font-size: 0.85rem;
+    color: var(--ink-light);
+    font-style: italic;
+    margin-bottom: 2mm;
+    padding-left: 2px;
+    line-height: 1.3;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ===== SUBSECTION ===== */
+  .subsection {
+    margin-bottom: 4mm;
+    position: relative;
+    z-index: 1;
+  }
+
+  .subsection-title {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--navy);
+    border-bottom: 1.5px solid var(--gold-light);
+    padding-bottom: 1px;
+    margin-bottom: 2mm;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .subsection-title .icon {
+    color: var(--gold);
+    font-size: 1rem;
+  }
+
+  /* ===== TABLES ===== */
+  .field-table {
+    width: 100%;
+    border-collapse: collapse;
+    position: relative;
+    z-index: 1;
+  }
+
+  .field-table th {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    text-align: left;
+    padding: 2px 4px;
+    border-bottom: 1px solid var(--border);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: var(--cream-dark);
+  }
+
+  .field-table td {
+    padding: 3.5px 4px;
+    border-bottom: 1px dotted var(--dotted);
+    vertical-align: bottom;
+    font-size: 1rem;
+  }
+
+  .field-table .num {
+    width: 22px;
+    color: var(--gold);
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .field-table .fill {
+    min-height: 16px;
+  }
+
+  /* ===== NUMBERED ROWS ===== */
+  .row-numbered {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-bottom: 2.5mm;
+  }
+
+  .row-num {
+    color: var(--gold);
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1rem;
+    min-width: 18px;
+  }
+
+  .row-line {
+    flex: 1;
+    border-bottom: 1.5px dotted var(--dotted);
+    min-height: 16px;
+  }
+
+  /* ===== ENERGY SECTION ===== */
+  .energy-grid {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 2mm;
+    position: relative;
+    z-index: 1;
+  }
+
+  .energy-level {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1rem;
+  }
+
+  .energy-checkbox {
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--charcoal);
+    border-radius: 3px;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .energy-label-high { color: #2d7a3a; font-weight: 600; }
+  .energy-label-mid { color: #c8973e; font-weight: 600; }
+  .energy-label-low { color: #a63d3d; font-weight: 600; }
+
+  .energy-note {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    position: relative;
+    z-index: 1;
+  }
+  .energy-note-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    white-space: nowrap;
+  }
+  .energy-note-line {
+    flex: 1;
+    border-bottom: 1.5px dotted var(--dotted);
+    min-height: 16px;
+  }
+
+  /* ===== QUEST SECTION ===== */
+  .quest-block {
+    margin-bottom: 4mm;
+    padding: 3mm;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    background: rgba(250, 246, 239, 0.5);
+    position: relative;
+    z-index: 1;
+  }
+
+  .quest-label {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: var(--navy);
+    margin-bottom: 2mm;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .quest-type {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--cream);
+    background: var(--navy);
+    padding: 1px 6px;
+    border-radius: 2px;
+  }
+
+  .quest-type-side {
+    background: var(--charcoal-light);
+  }
+
+  .quest-field {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-bottom: 1.5mm;
+  }
+
+  .quest-field-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    white-space: nowrap;
+  }
+
+  .quest-field-line {
+    flex: 1;
+    border-bottom: 1.5px dotted var(--dotted);
+    min-height: 15px;
+  }
+
+  .quest-clock-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 2mm;
+  }
+
+  .quest-clock-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--charcoal);
+  }
+
+  .quest-progress {
+    font-size: 0.85rem;
+    color: var(--ink-light);
+    display: flex;
+    align-items: baseline;
+    gap: 3px;
+  }
+
+  .quest-progress-line {
+    border-bottom: 1.5px dotted var(--dotted);
+    width: 20px;
+    display: inline-block;
+  }
+
+  /* ===== CLOCK SVG ===== */
+  .clock-svg {
+    flex-shrink: 0;
+  }
+  .clock-svg .segment {
+    fill: none;
+    stroke: var(--charcoal);
+    stroke-width: 1.5;
+  }
+  .clock-svg .ring {
+    fill: none;
+    stroke: var(--charcoal);
+    stroke-width: 1.8;
+  }
+  .clock-svg .center-dot {
+    fill: var(--gold);
+  }
+
+  /* ===== BACKSTORY LINES ===== */
+  .backstory-line {
+    border-bottom: 1.5px dotted var(--dotted);
+    height: 20px;
+    width: 100%;
+  }
+
+  /* ===== SESSION LOG TABLE ===== */
+  .log-table {
+    width: 100%;
+    border-collapse: collapse;
+    position: relative;
+    z-index: 1;
+  }
+
+  .log-table th {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    text-align: left;
+    padding: 2px 3px;
+    border-bottom: 1.5px solid var(--border);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: var(--cream-dark);
+  }
+
+  .log-table td {
+    padding: 2.5px 3px;
+    border-bottom: 1px dotted var(--dotted);
+    font-size: 0.9rem;
+    vertical-align: bottom;
+  }
+
+  .log-table .sess-num {
+    width: 28px;
+    text-align: center;
+    color: var(--gold);
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+
+  .log-table .sess-date { width: 68px; }
+
+  /* ===== LINES & VEILS ===== */
+  .safety-block {
+    position: relative;
+    z-index: 1;
+  }
+
+  .safety-row {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 2mm;
+  }
+
+  .safety-label {
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: var(--navy);
+    min-width: 55px;
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+
+  .safety-desc {
+    font-size: 0.8rem;
+    color: var(--ink-light);
+    min-width: 180px;
+    flex-shrink: 0;
+  }
+
+  .safety-line {
+    flex: 1;
+    border-bottom: 1.5px dotted var(--dotted);
+    min-height: 15px;
+  }
+
+  .safety-xcard {
+    font-size: 0.85rem;
+    color: var(--ink-light);
+    font-style: italic;
+    padding: 2px 0;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    margin-top: auto;
+    padding-top: 4mm;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--charcoal-light);
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-left {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+  }
+
+  .footer-right {
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+  }
+
+  .footer-line {
+    position: absolute;
+    bottom: 0;
+    left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--navy), var(--gold), var(--navy));
+  }
+
+  /* ===== PAGE LABELS ===== */
+  .page-label {
+    position: absolute;
+    top: 14mm;
+    right: 14mm;
+    font-size: 0.75rem;
+    color: var(--charcoal-light);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+
+  /* ===== FLEX CONTENT ===== */
+  .content {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ===== TWO COLUMN LAYOUT ===== */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4mm;
+  }
+
+  /* ===== INVENTORY TABLE ===== */
+  .inv-table {
+    width: 100%;
+    border-collapse: collapse;
+    position: relative;
+    z-index: 1;
+  }
+  .inv-table th {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    text-align: left;
+    padding: 2px 3px;
+    border-bottom: 1.5px solid var(--border);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: var(--cream-dark);
+  }
+  .inv-table td {
+    padding: 2.5px 3px;
+    border-bottom: 1px dotted var(--dotted);
+    font-size: 0.9rem;
+    vertical-align: bottom;
+  }
+  .inv-table .inv-num {
+    width: 20px;
+    text-align: center;
+    color: var(--gold);
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+  .inv-table .inv-sess { width: 65px; }
+
+  /* ===== DIVIDER ===== */
+  .section-divider {
+    height: 0;
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2mm 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ===== PRINT STYLES ===== */
+  @media print {
+    html { font-size: 10px; }
+    body {
+      background: white;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .page {
+      margin: 0;
+      padding: 10mm 12mm 8mm 12mm;
+      box-shadow: none;
+      width: 210mm;
+      height: 297mm;
+      min-height: 297mm;
+      max-height: 297mm;
+      page-break-after: always;
+      overflow: hidden;
+    }
+    .page:last-child {
+      page-break-after: auto;
+    }
+  }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  /* ===== SCREEN SPACING ===== */
+  @media screen {
+    .page + .page {
+      margin-top: 20mm;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== PAGE 1: FRONTE ==================== -->
+<div class="page" id="page-front">
+  <div class="compass">
+    <div class="compass-needle"></div>
+    <span class="compass-n">N</span>
+    <span class="compass-s">S</span>
+    <span class="compass-e">E</span>
+    <span class="compass-w">O</span>
+  </div>
+  <span class="page-label">Fronte</span>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo-area">
+      <div class="logo-placeholder"></div>
+      <div>
+        <div class="header-title">Quest Coaching</div>
+        <div class="header-subtitle">Scheda Personaggio</div>
+      </div>
+    </div>
+    <div class="header-version">v2.0</div>
+  </div>
+
+  <!-- PERSONAL INFO -->
+  <div class="info-bar">
+    <div class="info-field">
+      <span class="info-label">Nome</span>
+      <span class="info-value"></span>
+    </div>
+    <div class="info-field">
+      <span class="info-label">Data creazione</span>
+      <span class="info-value"></span>
+    </div>
+    <div class="info-field">
+      <span class="info-label">Sessione</span>
+      <span class="info-value"></span>
+    </div>
+    <div class="info-field">
+      <span class="info-label">Ultimo agg.</span>
+      <span class="info-value"></span>
+    </div>
+  </div>
+
+  <div class="content">
+    <!-- ASPETTI -->
+    <div class="subsection">
+      <div class="section-title">Aspetti</div>
+      <div class="section-hint">Frasi narrative che definiscono chi sei. Come gli Aspetti di Fate: risorse e sfide. In prima o terza persona.</div>
+      <table class="field-table">
+        <tr><td class="num">1.</td><td class="fill"></td></tr>
+        <tr><td class="num">2.</td><td class="fill"></td></tr>
+        <tr><td class="num">3.</td><td class="fill"></td></tr>
+        <tr><td class="num">4.</td><td class="fill"></td></tr>
+        <tr><td class="num">5.</td><td class="fill"></td></tr>
+      </table>
+    </div>
+
+    <!-- FORZE & VALORI - TWO COLUMN -->
+    <div class="two-col">
+      <!-- FORZE -->
+      <div class="subsection">
+        <div class="section-title">Forze Signature</div>
+        <div class="section-hint">Le tue 5 forze principali (VIA Character Strengths). Solo nomi.</div>
+        <table class="field-table">
+          <tr><td class="num">1.</td><td class="fill"></td></tr>
+          <tr><td class="num">2.</td><td class="fill"></td></tr>
+          <tr><td class="num">3.</td><td class="fill"></td></tr>
+          <tr><td class="num">4.</td><td class="fill"></td></tr>
+          <tr><td class="num">5.</td><td class="fill"></td></tr>
+        </table>
+      </div>
+
+      <!-- VALORI -->
+      <div class="subsection">
+        <div class="section-title">Valori</div>
+        <div class="section-hint">I tuoi principi non negoziabili. La bussola quando tutto il resto vacilla.</div>
+        <table class="field-table">
+          <colgroup><col style="width:22px"><col style="width:40%"><col></colgroup>
+          <thead><tr><th></th><th>Valore</th><th>Cosa significa per me</th></tr></thead>
+          <tbody>
+            <tr><td class="num">1.</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td class="num">2.</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td class="num">3.</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td class="num">4.</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td class="num">5.</td><td class="fill"></td><td class="fill"></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- LEGAMI -->
+    <div class="subsection">
+      <div class="section-title">Legami</div>
+      <div class="section-hint">Le relazioni che influenzano il tuo viaggio. Tipi: Alleato, Mentore, Compagno di viaggio, Sfidante, Ancora, Specchio, Ombra.</div>
+      <table class="field-table">
+        <colgroup><col style="width:28%"><col style="width:24%"><col></colgroup>
+        <thead><tr><th>Persona / Ruolo</th><th>Tipo di legame</th><th>Come influenza il viaggio</th></tr></thead>
+        <tbody>
+          <tr><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+          <tr><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+          <tr><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+          <tr><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SFIDE / OMBRE -->
+    <div class="subsection">
+      <div class="section-title">Sfide / Ombre</div>
+      <div class="section-hint">Il drago da affrontare. Aree di crescita riconosciute con compassione. Ogni ombra e anche una porta.</div>
+      <table class="field-table">
+        <colgroup><col style="width:50%"><col></colgroup>
+        <thead><tr><th>Il drago</th><th>Cosa mi insegna / cosa protegge</th></tr></thead>
+        <tbody>
+          <tr><td class="fill"></td><td class="fill"></td></tr>
+          <tr><td class="fill"></td><td class="fill"></td></tr>
+          <tr><td class="fill"></td><td class="fill"></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ENERGIA -->
+    <div class="subsection">
+      <div class="section-title">Energia &mdash; Stato Attuale</div>
+      <div class="section-hint">Come stai adesso? Un indicatore semplice, onesto. Si aggiorna ogni sessione.</div>
+      <div class="energy-grid">
+        <div class="energy-level">
+          <span class="energy-checkbox"></span>
+          <span class="energy-label-high">Alta</span>
+        </div>
+        <div class="energy-level">
+          <span class="energy-checkbox"></span>
+          <span class="energy-label-mid">Media</span>
+        </div>
+        <div class="energy-level">
+          <span class="energy-checkbox"></span>
+          <span class="energy-label-low">Bassa</span>
+        </div>
+      </div>
+      <div class="energy-note">
+        <span class="energy-note-label">Note sull'energia:</span>
+        <span class="energy-note-line"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-left">Quest Coaching &mdash; www.questcoaching.it</div>
+    <div class="footer-right">Il coaching viene prima del gioco. La sicurezza non e opzionale.</div>
+    <div class="footer-line"></div>
+  </div>
+</div>
+
+<!-- ==================== PAGE 2: RETRO ==================== -->
+<div class="page" id="page-back">
+  <div class="compass">
+    <div class="compass-needle"></div>
+    <span class="compass-n">N</span>
+    <span class="compass-s">S</span>
+    <span class="compass-e">E</span>
+    <span class="compass-w">O</span>
+  </div>
+  <span class="page-label">Retro</span>
+
+  <!-- HEADER (repeated for back page) -->
+  <div class="header">
+    <div class="logo-area">
+      <div class="logo-placeholder"></div>
+      <div>
+        <div class="header-title">Quest Coaching</div>
+        <div class="header-subtitle">Scheda Personaggio</div>
+      </div>
+    </div>
+    <div class="header-version">v2.0</div>
+  </div>
+
+  <div class="content">
+    <!-- QUEST ATTIVE -->
+    <div class="subsection">
+      <div class="section-title">Quest Attive</div>
+      <div class="section-hint">Le tue missioni. Ogni quest ha un Clock: un cerchio diviso in segmenti. Ogni passo avanti riempie un segmento.</div>
+
+      <!-- MAIN QUEST -->
+      <div class="quest-block">
+        <div class="quest-label"><span class="quest-type">Main Quest</span> La missione principale</div>
+        <div class="quest-field">
+          <span class="quest-field-label">Titolo:</span>
+          <span class="quest-field-line"></span>
+        </div>
+        <div class="quest-field">
+          <span class="quest-field-label">Perche conta per me:</span>
+          <span class="quest-field-line"></span>
+        </div>
+        <div class="quest-field">
+          <span class="quest-field-label">Come sapro di averla completata:</span>
+          <span class="quest-field-line"></span>
+        </div>
+        <div class="quest-clock-row">
+          <span class="quest-clock-label">Clock:</span>
+          <!-- 8-segment clock -->
+          <svg class="clock-svg" width="48" height="48" viewBox="0 0 48 48">
+            <circle class="ring" cx="24" cy="24" r="21"/>
+            <line class="segment" x1="24" y1="24" x2="24" y2="3"/>
+            <line class="segment" x1="24" y1="24" x2="38.85" y2="9.15"/>
+            <line class="segment" x1="24" y1="24" x2="45" y2="24"/>
+            <line class="segment" x1="24" y1="24" x2="38.85" y2="38.85"/>
+            <line class="segment" x1="24" y1="24" x2="24" y2="45"/>
+            <line class="segment" x1="24" y1="24" x2="9.15" y2="38.85"/>
+            <line class="segment" x1="24" y1="24" x2="3" y2="24"/>
+            <line class="segment" x1="24" y1="24" x2="9.15" y2="9.15"/>
+            <circle class="center-dot" cx="24" cy="24" r="2"/>
+          </svg>
+          <span class="quest-progress">
+            Segmenti: <span class="quest-progress-line"></span> / 8
+          </span>
+          <span style="font-size:0.75rem; color:var(--ink-light); margin-left: auto;">(8 segmenti)</span>
+        </div>
+      </div>
+
+      <!-- SIDE QUEST 1 -->
+      <div class="quest-block">
+        <div class="quest-label"><span class="quest-type quest-type-side">Side Quest 1</span></div>
+        <div class="quest-field">
+          <span class="quest-field-label">Titolo:</span>
+          <span class="quest-field-line"></span>
+        </div>
+        <div class="quest-field">
+          <span class="quest-field-label">Collegamento alla Main Quest:</span>
+          <span class="quest-field-line"></span>
+        </div>
+        <div class="quest-clock-row">
+          <span class="quest-clock-label">Clock:</span>
+          <!-- 4-segment clock -->
+          <svg class="clock-svg" width="40" height="40" viewBox="0 0 40 40">
+            <circle class="ring" cx="20" cy="20" r="17.5"/>
+            <line class="segment" x1="20" y1="20" x2="20" y2="2.5"/>
+            <line class="segment" x1="20" y1="20" x2="37.5" y2="20"/>
+            <line class="segment" x1="20" y1="20" x2="20" y2="37.5"/>
+            <line class="segment" x1="20" y1="20" x2="2.5" y2="20"/>
+            <circle class="center-dot" cx="20" cy="20" r="1.8"/>
+          </svg>
+          <span class="quest-progress">
+            Segmenti: <span class="quest-progress-line"></span> / <span class="quest-progress-line"></span>
+          </span>
+          <span style="font-size:0.75rem; color:var(--ink-light); margin-left: auto;">(cerchia: 4 / 6)</span>
+        </div>
+      </div>
+
+      <!-- SIDE QUEST 2 -->
+      <div class="quest-block">
+        <div class="quest-label"><span class="quest-type quest-type-side">Side Quest 2</span></div>
+        <div class="quest-field">
+          <span class="quest-field-label">Titolo:</span>
+          <span class="quest-field-line"></span>
+        </div>
+        <div class="quest-field">
+          <span class="quest-field-label">Collegamento alla Main Quest:</span>
+          <span class="quest-field-line"></span>
+        </div>
+        <div class="quest-clock-row">
+          <span class="quest-clock-label">Clock:</span>
+          <!-- 6-segment clock -->
+          <svg class="clock-svg" width="40" height="40" viewBox="0 0 40 40">
+            <circle class="ring" cx="20" cy="20" r="17.5"/>
+            <line class="segment" x1="20" y1="20" x2="20" y2="2.5"/>
+            <line class="segment" x1="20" y1="20" x2="35.16" y2="11.25"/>
+            <line class="segment" x1="20" y1="20" x2="35.16" y2="28.75"/>
+            <line class="segment" x1="20" y1="20" x2="20" y2="37.5"/>
+            <line class="segment" x1="20" y1="20" x2="4.84" y2="28.75"/>
+            <line class="segment" x1="20" y1="20" x2="4.84" y2="11.25"/>
+            <circle class="center-dot" cx="20" cy="20" r="1.8"/>
+          </svg>
+          <span class="quest-progress">
+            Segmenti: <span class="quest-progress-line"></span> / <span class="quest-progress-line"></span>
+          </span>
+          <span style="font-size:0.75rem; color:var(--ink-light); margin-left: auto;">(cerchia: 4 / 6)</span>
+        </div>
+      </div>
+
+      <!-- SIDE QUEST 3 -->
+      <div class="quest-block">
+        <div class="quest-label"><span class="quest-type quest-type-side">Side Quest 3</span></div>
+        <div class="quest-field">
+          <span class="quest-field-label">Titolo:</span>
+          <span class="quest-field-line"></span>
+        </div>
+        <div class="quest-field">
+          <span class="quest-field-label">Collegamento alla Main Quest:</span>
+          <span class="quest-field-line"></span>
+        </div>
+        <div class="quest-clock-row">
+          <span class="quest-clock-label">Clock:</span>
+          <!-- 4-segment clock -->
+          <svg class="clock-svg" width="40" height="40" viewBox="0 0 40 40">
+            <circle class="ring" cx="20" cy="20" r="17.5"/>
+            <line class="segment" x1="20" y1="20" x2="20" y2="2.5"/>
+            <line class="segment" x1="20" y1="20" x2="37.5" y2="20"/>
+            <line class="segment" x1="20" y1="20" x2="20" y2="37.5"/>
+            <line class="segment" x1="20" y1="20" x2="2.5" y2="20"/>
+            <circle class="center-dot" cx="20" cy="20" r="1.8"/>
+          </svg>
+          <span class="quest-progress">
+            Segmenti: <span class="quest-progress-line"></span> / <span class="quest-progress-line"></span>
+          </span>
+          <span style="font-size:0.75rem; color:var(--ink-light); margin-left: auto;">(cerchia: 4 / 6)</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- INVENTARIO -->
+    <div class="subsection">
+      <div class="section-title">Inventario</div>
+      <div class="section-hint">Strumenti, insight, risorse raccolte durante il viaggio. Aggiungi ad ogni sessione.</div>
+      <table class="inv-table">
+        <thead>
+          <tr><th style="width:20px"></th><th>Oggetto / Insight / Risorsa</th><th class="inv-sess">Sessione</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="inv-num">1.</td><td class="fill"></td><td class="fill"></td></tr>
+          <tr><td class="inv-num">2.</td><td class="fill"></td><td class="fill"></td></tr>
+          <tr><td class="inv-num">3.</td><td class="fill"></td><td class="fill"></td></tr>
+          <tr><td class="inv-num">4.</td><td class="fill"></td><td class="fill"></td></tr>
+          <tr><td class="inv-num">5.</td><td class="fill"></td><td class="fill"></td></tr>
+          <tr><td class="inv-num">6.</td><td class="fill"></td><td class="fill"></td></tr>
+          <tr><td class="inv-num">7.</td><td class="fill"></td><td class="fill"></td></tr>
+          <tr><td class="inv-num">8.</td><td class="fill"></td><td class="fill"></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- BACKSTORY -->
+    <div class="subsection">
+      <div class="section-title">Backstory</div>
+      <div class="section-hint">La storia che ti ha portato qui. Si rivela nel tempo, sessione dopo sessione.</div>
+      <div class="backstory-line"></div>
+      <div class="backstory-line"></div>
+      <div class="backstory-line"></div>
+      <div class="backstory-line"></div>
+      <div class="backstory-line"></div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- DIARIO DI BORDO -->
+    <div class="subsection">
+      <div class="section-title">Diario di Bordo</div>
+      <div class="section-hint">Ogni sessione ha un titolo. Come i capitoli di un libro che stai scrivendo.</div>
+      <table class="log-table">
+        <thead>
+          <tr><th class="sess-num">N.</th><th class="sess-date">Data</th><th>Titolo della sessione</th><th>Una frase che porto via</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="sess-num">0</td><td></td><td class="fill"></td><td class="fill"></td></tr>
+          <tr><td class="sess-num">1</td><td></td><td class="fill"></td><td class="fill"></td></tr>
+          <tr><td class="sess-num">2</td><td></td><td class="fill"></td><td class="fill"></td></tr>
+          <tr><td class="sess-num">3</td><td></td><td class="fill"></td><td class="fill"></td></tr>
+          <tr><td class="sess-num">4</td><td></td><td class="fill"></td><td class="fill"></td></tr>
+          <tr><td class="sess-num">5</td><td></td><td class="fill"></td><td class="fill"></td></tr>
+          <tr><td class="sess-num">6</td><td></td><td class="fill"></td><td class="fill"></td></tr>
+          <tr><td class="sess-num">7</td><td></td><td class="fill"></td><td class="fill"></td></tr>
+          <tr><td class="sess-num">8</td><td></td><td class="fill"></td><td class="fill"></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- LINES & VEILS -->
+    <div class="subsection">
+      <div class="section-title">Lines &amp; Veils &mdash; Sicurezza</div>
+      <div class="section-hint">Stabiliti nel Session Zero. Sempre attivi. Sempre rispettati.</div>
+      <div class="safety-block">
+        <div class="safety-row">
+          <span class="safety-label">Lines</span>
+          <span class="safety-desc">Argomenti OFF LIMITS:</span>
+          <span class="safety-line"></span>
+        </div>
+        <div class="safety-row">
+          <span class="safety-label">Veils</span>
+          <span class="safety-desc">Argomenti delicati:</span>
+          <span class="safety-line"></span>
+        </div>
+        <div class="safety-xcard">
+          <strong>X-Card:</strong> In qualsiasi momento puoi dire "X" per fermare un'esplorazione. Non servono spiegazioni. Sempre attiva.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-left">Quest Coaching &mdash; www.questcoaching.it</div>
+    <div class="footer-right">Il coaching viene prima del gioco. La sicurezza non e opzionale.</div>
+    <div class="footer-line"></div>
+  </div>
+</div>
+
+</body>
+</html>
