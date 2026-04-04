@@ -2,9 +2,9 @@
 
 > Framework di coaching professionale (ICF-aligned) che integra meccaniche di game design e TTRPG con metodologie di coaching evidence-based.
 
-**Versione:** 2.0 (dopo analisi critica)
-**Ultimo aggiornamento:** 1 Aprile 2026
-**Stato:** Tutti i materiali completati. Pronto per fase di validazione.
+**Versione:** 3.0 (ispirato a Not The End, design originale)
+**Ultimo aggiornamento:** 4 Aprile 2026
+**Stato:** Framework v3 completo. Pronto per prima sessione pilota.
 
 ---
 
@@ -13,8 +13,19 @@
 ```
 Coaching/
 ├── README.md                     ← Sei qui
-├── framework_v2.md               ← IL DOCUMENTO CENTRALE: blueprint del framework
+├── framework_v2.md               ← Blueprint v2 (archivio, basato su Blades/Fate)
 ├── instructions                  ← Brief originale del progetto
+│
+├── v3/                           ← FRAMEWORK v3 (versione attiva, ispirata a NTE)
+│   ├── framework_v3.md              IL DOCUMENTO CENTRALE v3: blueprint completo
+│   ├── 00_note_di_design.md         Principi, terminologia, fonti
+│   ├── session_zero.md              Guida Session Zero (75-90 min)
+│   ├── sessione_tipo.md             Guida sessione regolare (60 min)
+│   ├── toolkit_completo.md          I 5 strumenti in dettaglio
+│   ├── mappa_del_personaggio.md     Concept Mappa del Personaggio
+│   ├── mappa_template_v2.pdf        Template A3 stampabile (6 zone con icone)
+│   ├── session_zero_print.pdf       Guida Session Zero stampabile
+│   └── cheat_sheet.pdf              Foglio A4 fronte-retro per la sessione
 │
 ├── ricerca/                      ← Fondamenti teorici
 │   ├── step1_game_design.md         Game design, TTRPG, meccaniche di gioco

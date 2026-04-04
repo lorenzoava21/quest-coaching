@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Session Zero - Quest Coaching v3</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap');
+
+  @page {
+    size: A4 portrait;
+    margin: 18mm 20mm 20mm 20mm;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 9pt;
+    line-height: 1.6;
+    color: #3A3632;
+    background: #FFFFFF;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* COVER PAGE */
+  .cover {
+    width: 170mm;
+    height: 257mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    page-break-after: always;
+  }
+
+  .cover-brand {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 8pt;
+    letter-spacing: 0.2em;
+    color: #A09A94;
+    text-transform: uppercase;
+    margin-bottom: 20mm;
+  }
+
+  .cover-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 36pt;
+    color: #3A3632;
+    letter-spacing: 0.03em;
+    line-height: 1.15;
+  }
+
+  .cover-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 14pt;
+    color: #8A8480;
+    margin-top: 6mm;
+  }
+
+  .cover-ornament {
+    margin-top: 12mm;
+    display: flex;
+    align-items: center;
+    gap: 3mm;
+  }
+
+  .cover-ornament .c-dash {
+    width: 18mm;
+    border-top: 0.4px solid #C8C2BA;
+  }
+
+  .cover-ornament .c-dot {
+    width: 2mm;
+    height: 2mm;
+    border-radius: 50%;
+    background: #C8C2BA;
+  }
+
+  .cover-meta {
+    margin-top: 25mm;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 8pt;
+    color: #A09A94;
+    line-height: 2;
+  }
+
+  .cover-meta strong {
+    font-weight: 400;
+    color: #7A756F;
+  }
+
+  /* CONTENT PAGES */
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 20pt;
+    color: #3A3632;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 2mm;
+    padding-bottom: 3mm;
+    border-bottom: 0.4px solid #D8D3CC;
+    page-break-after: avoid;
+    margin-top: 8mm;
+  }
+
+  h1 .fase-num {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 8pt;
+    color: #A09A94;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 1.5mm;
+  }
+
+  h1 .fase-time {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 8pt;
+    color: #A09A94;
+    float: right;
+    text-transform: none;
+    letter-spacing: 0.05em;
+    margin-top: 2mm;
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 13pt;
+    color: #5A554F;
+    margin-top: 4mm;
+    margin-bottom: 2mm;
+    page-break-after: avoid;
+  }
+
+  h2 .sub-time {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 7.5pt;
+    color: #A09A94;
+    margin-left: 2mm;
+  }
+
+  p {
+    margin-bottom: 2.5mm;
+  }
+
+  .quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 10.5pt;
+    color: #5A554F;
+    padding: 2mm 0 2mm 5mm;
+    border-left: 1.5px solid #D8D3CC;
+    margin: 3mm 0;
+  }
+
+  .note {
+    font-size: 8pt;
+    color: #7A756F;
+    background: #F8F7F5;
+    padding: 3mm 4mm;
+    border-radius: 1mm;
+    margin: 3mm 0;
+    page-break-inside: avoid;
+  }
+
+  .note strong {
+    font-weight: 500;
+    color: #5A554F;
+  }
+
+  ul {
+    margin: 2mm 0 3mm 5mm;
+    list-style: none;
+  }
+
+  ul li {
+    padding-left: 3mm;
+    position: relative;
+    margin-bottom: 1.5mm;
+  }
+
+  ul li::before {
+    content: '';
+    position: absolute;
+    left: -1mm;
+    top: 2.2mm;
+    width: 1.2mm;
+    height: 1.2mm;
+    border-radius: 50%;
+    background: #C8C2BA;
+  }
+
+  strong {
+    font-weight: 500;
+    color: #3A3632;
+  }
+
+  .domanda {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 10.5pt;
+    color: #3A3632;
+    margin: 2mm 0;
+  }
+
+  .separator {
+    border: none;
+    border-top: 0.3px solid #E0DCD6;
+    margin: 6mm 0;
+  }
+
+  .page-break {
+    page-break-before: always;
+  }
+
+  /* SPECIAL SECTIONS */
+  .situazioni-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3mm;
+    margin-top: 3mm;
+  }
+
+  .situazione {
+    background: #F8F7F5;
+    padding: 3mm 4mm;
+    border-radius: 1mm;
+    page-break-inside: avoid;
+  }
+
+  .situazione-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 9pt;
+    color: #5A554F;
+    margin-bottom: 1mm;
+  }
+
+  .situazione p {
+    font-size: 8pt;
+    color: #7A756F;
+    margin-bottom: 0;
+  }
+
+  /* CHECKLIST */
+  .checklist {
+    list-style: none;
+    margin: 3mm 0;
+  }
+
+  .checklist li {
+    padding-left: 6mm;
+    position: relative;
+    margin-bottom: 2mm;
+    font-size: 8.5pt;
+  }
+
+  .checklist li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 1mm;
+    width: 3mm;
+    height: 3mm;
+    border: 0.5px solid #B5AFA6;
+    border-radius: 0.5mm;
+    background: none;
+  }
+
+  /* TIMING TABLE */
+  .timing-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 3mm 0;
+    font-size: 8.5pt;
+  }
+
+  .timing-table th {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 9pt;
+    color: #5A554F;
+    text-align: left;
+    padding: 2mm 3mm;
+    border-bottom: 0.5px solid #D8D3CC;
+  }
+
+  .timing-table td {
+    padding: 2mm 3mm;
+    border-bottom: 0.3px solid #ECEAE6;
+    color: #5A554F;
+  }
+
+  .timing-table td:nth-child(2),
+  .timing-table td:nth-child(3) {
+    text-align: center;
+    color: #8A8480;
+  }
+
+  /* FOOTER */
+  .page-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 8mm;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20mm;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 6pt;
+    color: #C8C2BA;
+  }
+
+  /* PRINCIPI REF CARD */
+  .principi-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2mm;
+    margin: 2mm 0;
+  }
+
+  .principio {
+    padding: 2mm 3mm;
+    border-left: 1.5px solid #D8D3CC;
+  }
+
+  .principio-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 8.5pt;
+    color: #7A756F;
+  }
+
+  .principio-text {
+    font-size: 7.5pt;
+    color: #5A554F;
+    margin-top: 0.5mm;
+  }
+
+  /* TERMINOLOGIA TABLE */
+  .term-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2mm 0;
+    font-size: 8.5pt;
+    page-break-inside: avoid;
+  }
+
+  .term-table th {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 9pt;
+    color: #5A554F;
+    text-align: left;
+    padding: 2mm 3mm;
+    border-bottom: 0.5px solid #D8D3CC;
+  }
+
+  .term-table td {
+    padding: 1.5mm 3mm;
+    border-bottom: 0.3px solid #ECEAE6;
+    vertical-align: top;
+  }
+
+  .term-table td:first-child {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 9.5pt;
+    color: #5A554F;
+    white-space: nowrap;
+  }
+
+  .term-table td:last-child {
+    font-style: italic;
+    color: #8A8480;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ==================== COVER ==================== -->
+<div class="cover">
+  <div class="cover-brand">Quest Coaching</div>
+  <div class="cover-title">Session Zero</div>
+  <div class="cover-subtitle">Guida per il coach</div>
+  <div class="cover-ornament">
+    <span class="c-dash"></span>
+    <span class="c-dot"></span>
+    <span class="c-dash"></span>
+  </div>
+  <div class="cover-meta">
+    <strong>Durata:</strong> 75-90 minuti<br>
+    <strong>Materiali:</strong> Mappa A3, penne colorate, post-it<br>
+    <strong>Nota:</strong> Questa guida non è uno script. È una struttura. Le parole sono tue.
+  </div>
+</div>
+
+<!-- ==================== PAGE 2: PRINCIPI + TERMINOLOGIA ==================== -->
+
+<h1>Riferimento rapido</h1>
+
+<h2>I 6 principi di design</h2>
+
+<div class="principi-grid">
+  <div class="principio">
+    <div class="principio-num">1. La fisicità crea presenza</div>
+    <div class="principio-text">Oggetti reali: carte, fogli, penne. Il cliente tocca, scrive, sposta.</div>
+  </div>
+  <div class="principio">
+    <div class="principio-num">2. Il cliente sceglie l'esposizione</div>
+    <div class="principio-text">Quanto rischiare, quanto andare in profondità. Il coach propone, il cliente sceglie.</div>
+  </div>
+  <div class="principio">
+    <div class="principio-num">3. Le difficoltà appartengono al cliente</div>
+    <div class="principio-text">Il coach non assegna significati. Chiede: "Cosa significa questo per te?"</div>
+  </div>
+  <div class="principio">
+    <div class="principio-num">4. I segni del passato sono anche risorse</div>
+    <div class="principio-text">Le esperienze difficili sono sia vulnerabilità che fonte di resilienza.</div>
+  </div>
+  <div class="principio">
+    <div class="principio-num">5. Ogni fine è un inizio</div>
+    <div class="principio-text">Il fallimento non chiude, apre. Ogni battuta d'arresto rivela e crea possibilità.</div>
+  </div>
+  <div class="principio">
+    <div class="principio-num">6. Le parole definiscono, i numeri riducono</div>
+    <div class="principio-text">Il cliente è descritto in parole e frasi. Mai in numeri o punteggi.</div>
+  </div>
+</div>
+
+<h2>Terminologia</h2>
+
+<table class="term-table">
+  <tr><th>Termine</th><th>Significato</th><th>Descrizione</th></tr>
+  <tr><td>Mappa</td><td>Il documento centrale del cliente</td><td>cresce e cambia nel tempo</td></tr>
+  <tr><td>Tratti</td><td>Parole che descrivono chi è il cliente</td><td>collegati tra loro spazialmente</td></tr>
+  <tr><td>Fuochi</td><td>Le qualità che si accendono nel flusso</td><td>forze naturali, carattere</td></tr>
+  <tr><td>Segni</td><td>Esperienze che hanno lasciato un'impronta</td><td>sia vulnerabilità che forza</td></tr>
+  <tr><td>Legami</td><td>Le persone significative</td><td>chi influenza il viaggio</td></tr>
+  <tr><td>Valori</td><td>I principi non negoziabili</td><td>la bussola del percorso</td></tr>
+  <tr><td>Direzione</td><td>L'obiettivo del percorso</td><td>formulato come intenzione</td></tr>
+  <tr><td>Tappe</td><td>Marcatori visivi di progresso</td><td>cerchio, sentiero, forma libera</td></tr>
+  <tr><td>Crocevia</td><td>Momento significativo identificato dal cliente</td><td>dopo un Crocevia, la Mappa cambia</td></tr>
+  <tr><td>Patto</td><td>L'accordo su come lavorare insieme</td><td></td></tr>
+  <tr><td>Pausa</td><td>Il segnale per fermarsi</td><td>senza bisogno di spiegare</td></tr>
+</table>
+
+<h2>I tre livelli</h2>
+<table class="term-table">
+  <tr><th>Livello</th><th>Cosa si usa</th><th>Per chi</th></tr>
+  <tr><td>Leggero</td><td>Solo linguaggio narrativo + Tappe</td><td>corporate, scettici</td></tr>
+  <tr><td>Integrato</td><td>Mappa + strumenti visivi</td><td>curiosi, creativi</td></tr>
+  <tr><td>Immersivo</td><td>Personaggio, 3a persona, roleplay</td><td>gamer, chi cerca diversità</td></tr>
+</table>
+
+<!-- ==================== PAGE 3: FASI 1-2 ==================== -->
+<div style="margin-top: 6mm;"></div>
+
+<h1>
+  <span class="fase-num">Fase 1</span>
+  Apertura
+  <span class="fase-time">10 min</span>
+</h1>
+
+<h2>Accoglienza <span class="sub-time">2 min</span></h2>
+<p>Chiedi come sta. Non come cortesia: come primo atto di ascolto. Nota il tono, l'energia, se c'è ansia o curiosità. Rifletti quello che senti.</p>
+
+<h2>Cos'è questo percorso <span class="sub-time">5 min</span></h2>
+<p>Spiega tre cose:</p>
+<p><strong>Cosa è.</strong> Coaching professionale. Tu non dai consigli. Crei le condizioni perché il cliente veda quello che già sa ma non mette a fuoco. Fondamento: competenze ICF e psicologia positiva.</p>
+<p><strong>Cosa lo rende diverso.</strong> Strumenti ispirati al game design e alla narrazione per rendere il percorso più concreto, visuale e coinvolgente. La distanza psicologica riduce la reattività emotiva. Il progresso visibile alimenta la motivazione.</p>
+<ul>
+  <li>Per un curioso/creativo: "Usiamo strumenti dal mondo dei giochi di ruolo come lenti per esplorare chi sei e dove vuoi andare."</li>
+  <li>Per un corporate/scettico: "Integriamo strumenti dal game design per rendere il percorso strutturato e misurabile."</li>
+</ul>
+<p><strong>Cosa non è.</strong> Non è terapia. Non è un gioco fine a se stesso. Se emerge qualcosa che richiede supporto clinico, glielo dici con trasparenza.</p>
+
+<h2>I tre livelli <span class="sub-time">3 min</span></h2>
+<p>Il cliente sceglie quanto "gioco" vuole. Presenta i tre livelli. Se esita, suggerisci di partire dal livello 2.</p>
+<div class="quote">"Non c'è un livello migliore. C'è quello giusto per te. E puoi cambiare idea quando vuoi."</div>
+
+<hr class="separator">
+
+<h1>
+  <span class="fase-num">Fase 2</span>
+  Il Patto
+  <span class="fase-time">15 min</span>
+</h1>
+
+<h2>Come lavoriamo insieme <span class="sub-time">8 min</span></h2>
+<p>Quattro domande. Lascia tempo per rispondere. Non riempire i silenzi.</p>
+
+<div class="domanda">1. "Come vuoi che lavoriamo insieme?"</div>
+<p>Riflessivo o sfidante? Strutturato o fluido? Se non sa: "Pensa a un momento in cui qualcuno ti ha aiutato davvero. Cosa faceva?"</p>
+
+<div class="domanda">2. "Cosa mi dai il permesso di fare?"</div>
+<p>Interromperti? Dirti cose scomode? Stai negoziando i confini della relazione.</p>
+
+<div class="domanda">3. "Come vuoi che ti sfidi?"</div>
+<p>Direttamente, con delicatezza, con umorismo? La sfida è il motore del coaching. Ma deve essere sicura.</p>
+
+<div class="domanda">4. "Come faccio a sapere se qualcosa non funziona?"</div>
+<p>Crea il canale di feedback. Normalizza il diritto del cliente di dirti quando qualcosa non va.</p>
+
+<h2>Logistica <span class="sub-time">5 min</span></h2>
+<ul>
+  <li>Sessioni da 60 minuti, cadenza settimanale o bisettimanale</li>
+  <li>Tra le sessioni: esperimenti, non compiti. Se non funziona, è un dato, non un fallimento</li>
+  <li>La Mappa è un documento vivo, cresce ad ogni sessione</li>
+</ul>
+
+<h2>Il Patto <span class="sub-time">2 min</span></h2>
+<div class="quote">"Io mi impegno a essere onesto, a non avere un'agenda nascosta, a sfidarti con rispetto, e a mettere la tua crescita al centro. Tu ti impegni a essere presente, a sperimentare con coraggio, e a dirmi quando qualcosa non funziona."</div>
+<p>Aspetta un "sì" detto con convinzione.</p>
+
+<!-- ==================== PAGE 4: FASE 3 + INIZIO FASE 4 ==================== -->
+<div style="margin-top: 6mm;"></div>
+
+<h1>
+  <span class="fase-num">Fase 3</span>
+  Sicurezza
+  <span class="fase-time">10 min</span>
+</h1>
+
+<div class="note"><strong>Questa fase non è opzionale.</strong> A nessun livello.</div>
+
+<h2>La Pausa <span class="sub-time">3 min</span></h2>
+<div class="quote">"In qualunque momento puoi dire 'pausa'. Ci fermiamo. Senza bisogno di spiegare. Respiriamo. Decidiamo come proseguire."</div>
+<div class="quote">"Se dici pausa, la mia reazione sarà: 'Ok, facciamo un respiro.' Nient'altro."</div>
+
+<h2>I Confini <span class="sub-time">3 min</span></h2>
+<div class="domanda">"Ci sono temi che preferisci non toccare?"</div>
+<div class="domanda">"E temi che vanno bene ma con delicatezza?"</div>
+<p>Non serve che spieghi perché. Prendi nota. Questi confini possono cambiare nel tempo.</p>
+
+<h2>Screening <span class="sub-time">4 min</span></h2>
+<p>Due domande, con naturalezza:</p>
+<div class="domanda">"Stai seguendo un percorso terapeutico?"</div>
+<p>Se sì: ottimo, coaching e terapia coesistono. Se no: se emergesse il bisogno, glielo dici.</p>
+
+<div class="domanda">"Ci sono esperienze recenti particolarmente difficili che vuoi che io sappia?"</div>
+
+<div class="note"><strong>Se emerge materiale clinico</strong> (trauma recente, patologie attive, crisi): fermati. Accogli. Grounding se necessario ("Piedi a terra. Tre cose che vedi."). Suggerisci referral. Mai improvvisare terapia. La sicurezza viene prima del percorso.</div>
+
+<hr class="separator">
+
+<h1>
+  <span class="fase-num">Fase 4</span>
+  La Mappa del Personaggio
+  <span class="fase-time">25-30 min</span>
+</h1>
+
+<div class="note">Questa è la fase centrale. Non correre. Se il cliente si commuove, si blocca, ha bisogno di silenzio: è il segno che state lavorando bene. Stai nello spazio. Al livello 1 non si usa la Mappa fisica, ma le stesse domande vengono esplorate verbalmente.</div>
+
+<p>Il cliente scrive direttamente sul foglio A3. Il coach guida ma non scrive al posto del cliente. La Mappa è sua, con la sua grafia, le sue parole.</p>
+
+<h2>Tratti <span class="sub-time">5-6 min</span></h2>
+<div class="domanda">"Chi sei? Non il curriculum. L'essenza. Se dovessi descriverti in 3-5 parole o frasi brevi, cosa diresti?"</div>
+<p>Se fatica:</p>
+<ul>
+  <li>"Come ti descriverebbero le persone che ti conoscono meglio?"</li>
+  <li>"Cosa c'è di te che gli altri non vedono subito ma che è fondamentale?"</li>
+  <li>Se fa una lista di ruoli: "Quelli sono i ruoli. Sotto quei ruoli, chi c'è?"</li>
+</ul>
+<p>Il cliente scrive i Tratti sulla Mappa. Non devono essere perfetti. Devono essere veri.</p>
+
+<h2>Fuochi <span class="sub-time">5-6 min</span></h2>
+<div class="domanda">"Quando ti senti nel tuo elemento? Pensa a un momento in cui ti sentivi al posto giusto, pieno di energia. Cosa stavi facendo?"</div>
+<ul>
+  <li>"Quando la vita si fa difficile, quale qualità ti porta dall'altra parte?"</li>
+  <li>"Per cosa ti cercano le persone che ti conoscono?"</li>
+</ul>
+<p>3-5 Fuochi. Se ha fatto il VIA Survey, partite da lì.</p>
+
+<!-- ==================== PAGE 5: FASE 4 (continua) + FASE 5 ==================== -->
+<div style="margin-top: 6mm;"></div>
+
+<h2>Segni <span class="sub-time">5-7 min</span></h2>
+<div class="note"><strong>Sezione delicata.</strong> Safety tools attivi. Chiedi il permesso prima di procedere.</div>
+
+<div class="domanda">"Posso farti una domanda coraggiosa?"</div>
+<div class="domanda">"Quali esperienze ti hanno segnato? Non necessariamente negative. Cose che hanno lasciato un'impronta. Che ti hanno cambiato."</div>
+
+<p>Per ogni Segno:</p>
+<ul>
+  <li>"In che modo questo Segno ti rende vulnerabile?"</li>
+  <li>"E in che modo ti rende forte?"</li>
+</ul>
+
+<p>Questa dualità è il cuore dei Segni. Suggerisci un colore diverso per distinguerli dai Tratti e dai Fuochi.</p>
+<p>Se il cliente non vuole: "Va benissimo. Questa sezione la riempiamo quando e se ti sentirai pronto."</p>
+
+<h2>Legami <span class="sub-time">3-4 min</span></h2>
+<div class="domanda">"Chi sono le persone che influenzano davvero la tua vita? Non tutti. Quelle che contano."</div>
+<p>Per ogni persona: "Ti sostiene, ti sfida, o è più complicato di così?"</p>
+
+<h2>Valori <span class="sub-time">4-5 min</span></h2>
+<div class="domanda">"Se dovessi scegliere 3 principi non negoziabili per la tua vita, quali sarebbero?"</div>
+<p>Se esita: "Cosa ti fa arrabbiare quando viene violato? Cosa ti fa sentire vivo quando lo vivi?"</p>
+<p>Per ogni valore: "È un valore che vivi pienamente adesso, o c'è un gap?"</p>
+
+<h2>Pausa <span class="sub-time">1 min</span></h2>
+<div class="quote">"Facciamo un respiro. Hai appena messo nero su bianco cose importanti su di te. Come stai?"</div>
+
+<hr class="separator">
+
+<h1>
+  <span class="fase-num">Fase 5</span>
+  La Direzione
+  <span class="fase-time">15 min</span>
+</h1>
+
+<h2>Identificare la Direzione <span class="sub-time">6-7 min</span></h2>
+<div class="domanda">"Qual è la cosa più importante che vuoi realizzare nei prossimi mesi? Non la più urgente. La più importante."</div>
+<p>Non accontentarti della prima risposta. Spesso è quella "sicura". Scava:</p>
+<ul>
+  <li>"Se domani ti svegliassi e ce l'avessi fatta, come sarebbe diversa la tua vita?"</li>
+  <li>"Perché questo è importante per te? Quale valore c'è sotto?"</li>
+</ul>
+<p>Collega la Direzione ai Valori emersi nella Mappa.</p>
+
+<h2>Dare forma <span class="sub-time">4-5 min</span></h2>
+<p><strong>Il nome.</strong> "Se dovessi dare un titolo a questa Direzione, quale sarebbe?"</p>
+<p><strong>Le Tappe.</strong> Scegli con il cliente come rendere visibile il progresso. Cerchio a segmenti (4, 6, 8), sentiero con stazioni, o qualsiasi forma che abbia senso.</p>
+<p><strong>Dove sei adesso.</strong> "Su una scala da 1 a 10, dove sei?" Poi: "Cosa ti porta a dire [numero] e non zero?"</p>
+
+<h2>Il primo passo <span class="sub-time">4-5 min</span></h2>
+<div class="domanda">"Qual è un primo passo, piccolo e concreto, che puoi fare entro la prossima sessione?"</div>
+<p>Rendilo specifico. Formula come Implementation Intention: "Quando [situazione], allora io [azione]."</p>
+
+<!-- ==================== PAGE 6: FASE 6 + SITUAZIONI + CHECKLIST ==================== -->
+<div style="margin-top: 6mm;"></div>
+
+<h1>
+  <span class="fase-num">Fase 6</span>
+  Chiusura
+  <span class="fase-time">5-10 min</span>
+</h1>
+
+<h2>Restituzione <span class="sub-time">3-4 min</span></h2>
+<p>Guarda la Mappa insieme al cliente. Non leggerla come una lista. Guardala come un ritratto.</p>
+<div class="quote">"Come ti senti vedendo tutto questo?"</div>
+<p>Al livello 1: fai un recap verbale di quello che è emerso.</p>
+
+<h2>Stelle e Desideri <span class="sub-time">3-4 min</span></h2>
+<div class="domanda">"Cosa ha funzionato oggi? Qual è il momento che ti porti via?"</div>
+<div class="domanda">"Cosa vorresti di più o di diverso la prossima volta?"</div>
+
+<h2>Chiusura <span class="sub-time">2 min</span></h2>
+<p>Conferma il prossimo appuntamento. Ripeti l'Implementation Intention.</p>
+<div class="quote">"Il percorso inizia adesso. Ogni scelta che fai da qui in avanti è un passo. E se un passo non va come previsto, non è un fallimento. È un dato."</div>
+
+<hr class="separator">
+
+<h1>Situazioni particolari</h1>
+
+<div class="situazioni-grid">
+  <div class="situazione">
+    <div class="situazione-title">Il cliente piange</div>
+    <p>Stai presente. Silenzio. "Prendi il tuo tempo." Quando l'emozione si è posata: "Cosa c'è in queste lacrime?" Non dire "non piangere". Non cambiare argomento.</p>
+  </div>
+  <div class="situazione">
+    <div class="situazione-title">Il cliente è scettico</div>
+    <p>"Capisco lo scetticismo." Proponi l'esperimento: "Ti chiedo 75 minuti. Alla fine decidi tu." Parti dal livello 1. Non vendere il framework.</p>
+  </div>
+  <div class="situazione">
+    <div class="situazione-title">Il cliente non parla</div>
+    <p>"Non c'è fretta." Domande chiuse per scaldarsi. Offri la scrittura come alternativa alla parola.</p>
+  </div>
+  <div class="situazione">
+    <div class="situazione-title">Il cliente vuole risposte</div>
+    <p>"Se te lo dico io, funziona per una settimana. Se lo scopri tu, funziona per la vita."</p>
+  </div>
+  <div class="situazione">
+    <div class="situazione-title">Emergono temi clinici</div>
+    <p>Pausa. Grounding ("Piedi a terra. Tre cose che vedi."). Validazione. Referral. Mai improvvisare terapia.</p>
+  </div>
+</div>
+
+<hr class="separator">
+
+<h1>Checklist post-sessione</h1>
+
+<ul class="checklist">
+  <li>Mappa del Personaggio fotografata o conservata</li>
+  <li>Livello scelto dal cliente annotato</li>
+  <li>Direzione definita con Tappe</li>
+  <li>Implementation Intention scritta</li>
+  <li>Confini annotati</li>
+  <li>Screening annotato</li>
+  <li>Stelle e Desideri annotati</li>
+  <li>Mie osservazioni: energia, apertura, chiusura</li>
+  <li>Prossima sessione schedulata</li>
+  <li>C'è qualcosa da portare in supervisione?</li>
+</ul>
+
+<hr class="separator">
+
+<h2>Timing di riferimento</h2>
+
+<table class="timing-table">
+  <tr><th>Fase</th><th>Durata</th><th>Cumulativo</th></tr>
+  <tr><td>1. Apertura</td><td>10 min</td><td>0:10</td></tr>
+  <tr><td>2. Il Patto</td><td>15 min</td><td>0:25</td></tr>
+  <tr><td>3. Sicurezza</td><td>10 min</td><td>0:35</td></tr>
+  <tr><td>4. La Mappa</td><td>25-30 min</td><td>1:05</td></tr>
+  <tr><td>5. La Direzione</td><td>15 min</td><td>1:20</td></tr>
+  <tr><td>6. Chiusura</td><td>5-10 min</td><td>1:30</td></tr>
+</table>
+
+<p style="font-size: 8pt; color: #8A8480; margin-top: 3mm; font-style: italic;">Il timing è indicativo. Se la Mappa si espande, abbrevia la chiusura. Se arrivi a 90 minuti senza completare tutto, fermati. Le sezioni mancanti si completano nella sessione 2.</p>
+
+<div style="text-align: center; margin-top: 10mm; color: #C8C2BA;">
+  <div style="display: inline-flex; align-items: center; gap: 3mm;">
+    <span style="width: 14mm; border-top: 0.3px solid #D8D3CC;"></span>
+    <span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 9pt;">Quest Coaching v3</span>
+    <span style="width: 14mm; border-top: 0.3px solid #D8D3CC;"></span>
+  </div>
+</div>
+
+</body>
+</html>

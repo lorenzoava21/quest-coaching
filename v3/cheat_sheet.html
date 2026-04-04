@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Quest Coaching v3 - Cheat Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap');
+
+  @page {
+    size: A4 portrait;
+    margin: 12mm 13mm 12mm 13mm;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 7pt;
+    line-height: 1.35;
+    color: #3A3632;
+    background: #FFFFFF;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    width: 185mm;
+    height: 273mm;
+    padding: 0;
+    page-break-after: always;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page:last-child {
+    page-break-after: avoid;
+  }
+
+  /* Page title */
+  .page-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 16pt;
+    color: #3A3632;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 1mm;
+  }
+
+  .page-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 7pt;
+    color: #A09A94;
+    margin-bottom: 3.5mm;
+    padding-bottom: 2mm;
+    border-bottom: 0.4px solid #D8D3CC;
+  }
+
+  /* Phase blocks */
+  .phase {
+    margin-bottom: 3mm;
+  }
+
+  .phase-header {
+    display: flex;
+    align-items: baseline;
+    gap: 2mm;
+    margin-bottom: 1.2mm;
+    padding-bottom: 0.8mm;
+    border-bottom: 0.3px solid #D8D3CC;
+  }
+
+  .phase-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 10pt;
+    color: #7A756F;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .phase-time {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 6.5pt;
+    color: #A09A94;
+  }
+
+  .phase-body {
+    padding-left: 1mm;
+  }
+
+  /* Sub-sections */
+  .sub {
+    margin-bottom: 1.5mm;
+  }
+
+  .sub-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 7pt;
+    color: #3A3632;
+    margin-bottom: 0.3mm;
+  }
+
+  /* Key questions in italic Garamond */
+  .q {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 8pt;
+    color: #3A3632;
+    line-height: 1.3;
+  }
+
+  /* Bullet items */
+  ul {
+    list-style: none;
+    padding-left: 2.5mm;
+  }
+
+  ul li {
+    position: relative;
+    padding-left: 2mm;
+    margin-bottom: 0.2mm;
+  }
+
+  ul li::before {
+    content: "\2022";
+    position: absolute;
+    left: -1mm;
+    color: #A09A94;
+    font-size: 6pt;
+  }
+
+  /* Note text */
+  .note {
+    font-size: 6.5pt;
+    color: #A09A94;
+    font-style: italic;
+  }
+
+  /* Two-column layout */
+  .two-col {
+    display: flex;
+    gap: 4mm;
+  }
+
+  .two-col > div {
+    flex: 1;
+  }
+
+  /* Compact inline list */
+  .inline-list {
+    font-size: 6.5pt;
+    color: #7A756F;
+  }
+
+  /* Footer */
+  .page-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 1.5mm;
+    border-top: 0.3px solid #D8D3CC;
+  }
+
+  .footer-left {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 6.5pt;
+    color: #C5C0B8;
+  }
+
+  .footer-right {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 6pt;
+    color: #C5C0B8;
+    letter-spacing: 0.1em;
+  }
+
+  /* Divider */
+  .divider {
+    border: none;
+    border-top: 0.3px solid #D8D3CC;
+    margin: 2mm 0;
+  }
+
+  /* Compact prep box */
+  .prep-box {
+    background: #F7F5F3;
+    border-radius: 1.5mm;
+    padding: 1.5mm 2.5mm;
+    margin-bottom: 3mm;
+    font-size: 6.5pt;
+    color: #7A756F;
+  }
+
+  /* Bottom reference blocks for page 2 */
+  .ref-section {
+    margin-top: 2.5mm;
+    padding-top: 2mm;
+    border-top: 0.4px solid #D8D3CC;
+  }
+
+  .ref-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 8.5pt;
+    color: #7A756F;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 1.2mm;
+  }
+
+  .ref-item {
+    margin-bottom: 0.8mm;
+    font-size: 6.5pt;
+    line-height: 1.3;
+  }
+
+  .ref-item strong {
+    font-weight: 500;
+    color: #3A3632;
+  }
+
+  .ref-item span {
+    color: #7A756F;
+  }
+
+  /* Numbered questions */
+  .numbered {
+    padding-left: 0;
+    counter-reset: q;
+  }
+
+  .numbered li {
+    padding-left: 3.5mm;
+    counter-increment: q;
+  }
+
+  .numbered li::before {
+    content: counter(q) ".";
+    font-weight: 500;
+    font-size: 6.5pt;
+    color: #7A756F;
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== PAGINA 1: SESSION ZERO ==================== -->
+<div class="page">
+  <div class="page-title">Session Zero</div>
+  <div class="page-subtitle">75-90 minuti / Costruire la relazione, creare il Patto, disegnare la Mappa, definire la Direzione</div>
+
+  <div class="prep-box">
+    <strong>Preparazione:</strong> Foglio A3 bianco + penne colorate al centro del tavolo. Rileggi note contatto preliminare. 3 respiri. Piedi a terra.
+    <em>"Sono al servizio di questa persona. Ascolto."</em>
+  </div>
+
+  <!-- FASE 1 -->
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-name">Fase 1 / Apertura</span>
+      <span class="phase-time">10 min &middot; cumul. 0:10</span>
+    </div>
+    <div class="phase-body">
+      <div class="sub">
+        <div class="sub-title">Accoglienza</div>
+        <div class="q">"Come stai? Come arrivi?"</div>
+        <ul><li>Nota tono, energia, ansia/curiosità. Rifletti quello che senti.</li></ul>
+      </div>
+      <div class="sub">
+        <div class="sub-title">Cos'è questo percorso</div>
+        <ul>
+          <li><strong>Cosa è:</strong> Coaching professionale (ICF + psicologia positiva). Non dai consigli.</li>
+          <li><strong>Cosa lo rende diverso:</strong> Game design + narrazione. Distanza psicologica (self-distancing), progresso visibile.</li>
+          <li><strong>Cosa non è:</strong> Non terapia. Se serve supporto clinico, lo dici con trasparenza.</li>
+        </ul>
+      </div>
+      <div class="sub">
+        <div class="sub-title">I 3 livelli</div>
+        <ul>
+          <li><strong>Leggero:</strong> Solo linguaggio (viaggio, direzione, ostacoli) + Tappe.</li>
+          <li><strong>Integrato:</strong> + Mappa del Personaggio, strumenti visivi. Linguaggio narrativo.</li>
+          <li><strong>Immersivo:</strong> Personaggio con nome, narrazione in 3a persona, roleplay.</li>
+        </ul>
+        <div class="q" style="margin-top: 0.5mm;">"Non c'è un livello migliore. C'è quello giusto per te."</div>
+        <span class="note">Se esita, suggerisci livello 2. Se sceglie 1, rispettalo.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FASE 2 -->
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-name">Fase 2 / Il Patto</span>
+      <span class="phase-time">15 min &middot; cumul. 0:25</span>
+    </div>
+    <div class="phase-body">
+      <div class="sub">
+        <div class="sub-title">4 domande (lascia tempo, non riempire i silenzi)</div>
+        <ul class="numbered">
+          <li><span class="q">"Come vuoi che lavoriamo insieme?"</span> <span class="note">Se non sa: "Pensa a quando qualcuno ti ha aiutato davvero. Cosa faceva?"</span></li>
+          <li><span class="q">"Cosa mi dai il permesso di fare?"</span> <span class="note">Interromperti? Dirti cose scomode? Stare nel silenzio?</span></li>
+          <li><span class="q">"Come vuoi che ti sfidi?"</span> <span class="note">Direttamente, con delicatezza, con umorismo?</span></li>
+          <li><span class="q">"Come faccio a sapere se qualcosa non funziona?"</span> <span class="note">Crea il canale di feedback.</span></li>
+        </ul>
+      </div>
+      <div class="sub">
+        <div class="sub-title">Logistica</div>
+        <ul>
+          <li>60 min, settimanale o bisettimanale. Tra le sessioni: esperimenti, non compiti.</li>
+          <li>Mappa = documento vivo, cresce ogni sessione.</li>
+        </ul>
+      </div>
+      <div class="sub">
+        <div class="q">"Io mi impegno a essere onesto, a sfidarti con rispetto, a mettere la tua crescita al centro. Tu ti impegni a essere presente, a sperimentare con coraggio, e a dirmi quando qualcosa non funziona."</div>
+        <span class="note">Aspetta un "sì" detto con convinzione.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FASE 3 -->
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-name">Fase 3 / Sicurezza</span>
+      <span class="phase-time">10 min &middot; cumul. 0:35</span>
+    </div>
+    <div class="phase-body">
+      <div class="two-col">
+        <div>
+          <div class="sub-title">La Pausa</div>
+          <div class="q">"In qualunque momento puoi dire 'pausa'. Ci fermiamo. Senza bisogno di spiegare."</div>
+          <div style="margin-top: 0.5mm;"><div class="sub-title">I Confini</div></div>
+          <div class="q">"Ci sono temi che preferisci non toccare? E temi che vanno bene ma con delicatezza?"</div>
+        </div>
+        <div>
+          <div class="sub-title">Screening</div>
+          <div class="q">"Stai seguendo un percorso terapeutico?"</div>
+          <div class="q">"Ci sono esperienze recenti particolarmente difficili che vuoi che io sappia?"</div>
+          <div class="note" style="margin-top: 0.5mm;">Se emerge materiale clinico: ferma. Grounding ("Piedi a terra. 3 cose che vedi."). Referral. Mai improvvisare terapia.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FASE 4 -->
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-name">Fase 4 / La Mappa del Personaggio</span>
+      <span class="phase-time">25-30 min &middot; cumul. 1:05</span>
+    </div>
+    <div class="phase-body">
+      <span class="note">Non correre. Il cliente scrive, posiziona, collega. Parole vicine = collegate. Lv1: domande verbali. Lv2-3: foglio A3.</span>
+      <div class="two-col" style="margin-top: 1.2mm;">
+        <div>
+          <div class="sub">
+            <div class="sub-title">4.1 Tratti (5-6 min) <span class="note">/ chi sei</span></div>
+            <div class="q">"Chi sei? Non il curriculum. L'essenza. 3-5 parole o frasi."</div>
+            <ul><li class="note">Se fatica: "Come ti descriverebbero le persone che ti conoscono meglio?"</li>
+            <li class="note">Se fa lista di ruoli: "Sotto quei ruoli, chi c'è?"</li></ul>
+          </div>
+          <div class="sub">
+            <div class="sub-title">4.2 Fuochi (5-6 min) <span class="note">/ cosa ti accende</span></div>
+            <div class="q">"Quando ti senti nel tuo elemento? Momento specifico, pieno di energia."</div>
+            <ul><li class="note">"Quando la vita si fa difficile, quale qualità ti porta dall'altra parte?"</li></ul>
+          </div>
+          <div class="sub">
+            <div class="sub-title">4.3 Segni (5-7 min) <span class="note">/ cosa ti ha segnato</span></div>
+            <div class="q">"Posso farti una domanda coraggiosa?" poi: "Quali esperienze ti hanno segnato? Che ti hanno cambiato."</div>
+            <ul>
+              <li class="note">Per ogni Segno: "In che modo ti rende vulnerabile? E in che modo ti rende forte?"</li>
+              <li class="note">Se non vuole: "Va benissimo. La riempiamo quando e se ti sentirai pronto."</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="sub">
+            <div class="sub-title">4.4 Legami (3-4 min) <span class="note">/ chi cammina con te</span></div>
+            <div class="q">"Chi sono le persone che influenzano davvero la tua vita? Non tutti. Quelle che contano."</div>
+            <ul><li class="note">Per ognuno: "Ti sostiene, ti sfida, o è più complicato?"</li></ul>
+          </div>
+          <div class="sub">
+            <div class="sub-title">4.5 Valori (4-5 min) <span class="note">/ cosa non negozi</span></div>
+            <div class="q">"3 principi non negoziabili per la tua vita?"</div>
+            <ul>
+              <li class="note">Se esita: "Cosa ti fa arrabbiare quando viene violato?"</li>
+              <li class="note">"È un valore che vivi pienamente adesso, o c'è un gap?"</li>
+            </ul>
+          </div>
+          <div class="sub" style="margin-top: 1.5mm;">
+            <div class="q">"Facciamo un respiro. Hai messo nero su bianco cose importanti. Come stai?"</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FASE 5 -->
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-name">Fase 5 / La Direzione</span>
+      <span class="phase-time">15 min &middot; cumul. 1:20</span>
+    </div>
+    <div class="phase-body">
+      <div class="two-col">
+        <div>
+          <div class="sub-title">Identificare</div>
+          <div class="q">"Qual è la cosa più importante che vuoi realizzare nei prossimi mesi? Non la più urgente. La più importante."</div>
+          <ul>
+            <li class="note">"Se domani ce l'avessi fatta, come sarebbe diversa la tua vita?"</li>
+            <li class="note">"Perché è importante? Quale valore c'è sotto?"</li>
+            <li class="note">Troppi obiettivi: "Quello che renderebbe tutti gli altri più facili?"</li>
+            <li class="note">Non sa cosa vuole: "La tua prima Direzione potrebbe essere 'fare chiarezza'."</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-title">Dare forma</div>
+          <ul>
+            <li><strong>Nome:</strong> <span class="q">"Dai un titolo a questa Direzione."</span></li>
+            <li><strong>Tappe:</strong> Cerchio a segmenti, sentiero con stazioni, forma libera.</li>
+            <li><strong>Dove sei:</strong> <span class="q">"Da 1 a 10, dove sei?" poi "Cosa ti porta a dire [n] e non zero?"</span></li>
+          </ul>
+          <div class="sub-title" style="margin-top: 1mm;">Il primo passo</div>
+          <div class="q">"Un primo passo piccolo e concreto entro la prossima sessione?"</div>
+          <span class="note">Implementation Intention: "Quando [situazione], allora io [azione]."</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FASE 6 -->
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-name">Fase 6 / Chiusura</span>
+      <span class="phase-time">5-10 min &middot; cumul. 1:30</span>
+    </div>
+    <div class="phase-body">
+      <div class="two-col">
+        <div>
+          <div class="sub-title">Restituzione</div>
+          <div class="q">"Come ti senti vedendo tutto questo?"</div>
+          <span class="note">Lv2-3: guarda la Mappa insieme. Lv1: recap verbale.</span>
+        </div>
+        <div>
+          <div class="sub-title">Stelle e Desideri</div>
+          <div class="q">"Cosa ha funzionato oggi? Qual è il momento che ti porti via?"</div>
+          <div class="q">"Cosa vorresti di più o di diverso la prossima volta?"</div>
+        </div>
+      </div>
+      <div style="margin-top: 1mm;"><span class="note">Conferma appuntamento. Ripeti Implementation Intention. "Ogni scelta da qui in avanti è un passo. Se non va come previsto, non è un fallimento. È un dato."</span></div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="footer-left">Quest Coaching v3 / Cheat Sheet</div>
+    <div class="footer-right">PAGINA 1 / SESSION ZERO</div>
+  </div>
+</div>
+
+<!-- ==================== PAGINA 2: SESSIONE TIPO ==================== -->
+<div class="page">
+  <div class="page-title">Sessione Tipo</div>
+  <div class="page-subtitle">60 minuti / Esplorare, sfidare, agire. Ogni sessione è un passo nel viaggio del cliente.</div>
+
+  <div class="prep-box">
+    <strong>Preparazione:</strong> Rileggi note sessione precedente. Ripassa la Mappa: cosa è cambiato? Dove eravamo rimasti? 3 respiri. Piedi a terra.
+    <em>"Cosa serve a questa persona oggi?"</em>
+  </div>
+
+  <!-- FASE 1 -->
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-name">Fase 1 / Check-in</span>
+      <span class="phase-time">5-8 min &middot; cumul. 0:08</span>
+    </div>
+    <div class="phase-body">
+      <div class="two-col">
+        <div>
+          <div class="sub">
+            <div class="sub-title">Come stai?</div>
+            <ul>
+              <li>Lv1-2: <span class="q">"Come stai? Cosa porti qui oggi?"</span></li>
+              <li>Lv3: <span class="q">"Come sta [personaggio]? Cosa è successo nel suo mondo?"</span></li>
+            </ul>
+          </div>
+          <div class="sub">
+            <div class="sub-title">Stato delle Tappe</div>
+            <div class="q">"Cosa è avanzato dall'ultima volta? C'è qualcosa che è fermo?"</div>
+            <span class="note">Se fermo: "Cosa ti dice il fatto che è fermo?" (Spesso il blocco è il vero tema.)</span>
+          </div>
+        </div>
+        <div>
+          <div class="sub">
+            <div class="sub-title">Esperimenti</div>
+            <div class="q">"Cos'è successo con l'esperimento?"</div>
+            <ul>
+              <li>Ha funzionato: <span class="q">"Cosa hai scoperto?"</span></li>
+              <li>Non ha funzionato: <span class="q">"Cosa hai scoperto?"</span> <span class="note">(Stessa domanda.)</span></li>
+              <li>Non l'ha fatto: <span class="q">"Cosa si è messo in mezzo?"</span> <span class="note">Nessun giudizio.</span></li>
+            </ul>
+          </div>
+          <div class="sub">
+            <div class="sub-title">Intenzione per oggi</div>
+            <div class="q">"Di cosa hai bisogno oggi?"</div>
+            <span class="note">Orienta tutta la sessione. Risposta chiara o vaga: entrambe vanno bene.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FASE 2 -->
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-name">Fase 2 / Esplorazione</span>
+      <span class="phase-time">25-30 min &middot; cumul. 0:38</span>
+    </div>
+    <div class="phase-body">
+      <div class="two-col">
+        <div>
+          <div class="sub-title">Domande potenti</div>
+          <ul>
+            <li><span class="q">"Cosa c'è sotto quello che mi stai dicendo?"</span></li>
+            <li><span class="q">"Se vedessi questa situazione dall'esterno, cosa noteresti?"</span></li>
+            <li><span class="q">"Cosa significa questo per te?"</span></li>
+            <li><span class="q">"Cosa sai già che stai evitando di guardare?"</span></li>
+          </ul>
+          <span class="note">Lavora con i silenzi. Conta fino a 7 prima di parlare. Ascolto livello 3 (globale).</span>
+          <div style="margin-top: 1.5mm;">
+            <div class="sub-title">Collegamento alla Mappa</div>
+            <ul>
+              <li class="note">"Come si collega a [Tratto/Fuoco/Segno sulla Mappa]?"</li>
+              <li class="note">"Stai descrivendo qualcosa che assomiglia a un Segno. Lo riconosci?"</li>
+              <li class="note">"Sento un Fuoco che si accende qui. Lo vedi anche tu?"</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="sub-title">Strumenti opzionali (Lv 2-3)</div>
+          <span class="note">Introduci solo se servono. Mai per riempire il tempo.</span>
+          <div class="sub" style="margin-top: 1mm;">
+            <div class="sub-title">Narrazione in 3a persona</div>
+            <div class="q">"Descrivimi questa situazione come se stessi raccontando la storia di qualcun altro."</div>
+            <span class="note">Quando è troppo dentro l'emozione. Self-distancing (Kross, 2014).</span>
+            <div style="margin-top: 0.5mm; font-weight: 500; font-size: 6.5pt; color: #7A756F;">BRIDGING OBBLIGATORIO: <span class="q">"Cosa significa per te, non per il personaggio, ma per te?"</span></div>
+          </div>
+          <div class="sub">
+            <div class="sub-title">Carte Oracolo</div>
+            <span class="note">Quando la conversazione gira in tondo o è troppo razionale.</span>
+          </div>
+          <div class="sub">
+            <div class="sub-title">Esplorazione somatica</div>
+            <div class="q">"Dove senti questa cosa nel corpo? Che forma ha?"</div>
+            <span class="note">Quando è bloccato nella testa.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FASE 3 -->
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-name">Fase 3 / Confronto</span>
+      <span class="phase-time">10-15 min &middot; cumul. 0:53</span>
+    </div>
+    <div class="phase-body">
+      <div class="two-col">
+        <div>
+          <div class="sub-title">Nomina la resistenza</div>
+          <div class="q">"Mi sembra che ci sia qualcosa che torna ogni volta che ti avvicini a [obiettivo]. Lo vedi?"</div>
+          <span class="note">Offri quello che osservi. Il significato è suo.</span>
+          <div style="margin-top: 1mm;">
+            <div class="sub-title">"Ogni fine è un inizio"</div>
+            <div class="q">"Se provassi e non andasse come speri, cosa succederebbe? E poi? E dopo ancora?"</div>
+            <span class="note">Segui la catena fino in fondo. Il disastro immaginato è spesso molto meno grave.</span>
+          </div>
+        </div>
+        <div>
+          <div class="sub-title">Domande di scelta</div>
+          <ul>
+            <li><span class="q">"Cosa sei disposto a lasciare andare per ottenere questo?"</span></li>
+            <li><span class="q">"Se dici sì a questo, a cosa stai dicendo no?"</span></li>
+            <li><span class="q">"Qual è il costo di non scegliere?"</span></li>
+          </ul>
+          <div style="margin-top: 1mm;">
+            <div class="sub-title">Safety</div>
+            <span class="note">Se disagio: "Ok, facciamo un respiro." Grounding se necessario. La sicurezza viene prima della sfida. Sempre.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FASE 4 -->
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-name">Fase 4 / Azione + Chiusura</span>
+      <span class="phase-time">10-12 min &middot; cumul. 1:05</span>
+    </div>
+    <div class="phase-body">
+      <div class="two-col">
+        <div>
+          <div class="sub">
+            <div class="sub-title">Cosa porti via?</div>
+            <div class="q">"Cosa porti via da oggi? Quale insight, quale consapevolezza?"</div>
+          </div>
+          <div class="sub">
+            <div class="sub-title">Esperimenti</div>
+            <span class="note">Co-crea 1-2 esperimenti. Non compiti. Implementation Intentions:</span>
+            <div class="q">"Quando [situazione], allora io [azione]."</div>
+            <span class="note">Se troppo grande: "Un modo per renderlo ancora più piccolo?"</span>
+          </div>
+        </div>
+        <div>
+          <div class="sub">
+            <div class="sub-title">Aggiorna le Tappe</div>
+            <span class="note">Progresso visibile sulla Mappa. Se non c'è stato progresso: va bene. Non ogni sessione muove le Tappe.</span>
+          </div>
+          <div class="sub">
+            <div class="sub-title">Titolo della sessione</div>
+            <div class="q">"Se dovessi dare un titolo a questa sessione, quale sarebbe?"</div>
+          </div>
+          <div class="sub">
+            <div class="sub-title">Stelle e Desideri</div>
+            <div class="q">"Cosa ha funzionato oggi?"</div>
+            <div class="q">"Cosa vorresti di più o di diverso la prossima volta?"</div>
+            <span class="note">Prendi il feedback sul serio. Adatta la prossima sessione.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- CROCEVIA -->
+  <div style="margin-bottom: 2mm;">
+    <div class="sub-title" style="color: #7A756F;">Crocevia</div>
+    <span class="note">Circa 1 ogni 2-3 sessioni. Non forzare. Il cliente lo dichiara (cambio di energia, "ora capisco"). Dopo un Crocevia, aggiorna la Mappa: nuovo Tratto, Segno rielaborato, Fuoco acceso, Valore confermato/cambiato, Legame chiarito.</span>
+  </div>
+
+  <!-- PRINCIPI DI DESIGN -->
+  <div class="ref-section">
+    <div class="ref-title">I 6 principi di design</div>
+    <div class="ref-item"><strong>1. La fisicità crea presenza.</strong> <span>Carte, fogli, penne. Il cliente tocca, scrive, sposta. Il corpo è coinvolto.</span></div>
+    <div class="ref-item"><strong>2. Il cliente sceglie il livello di esposizione.</strong> <span>Il coach propone, il cliente sceglie quanto andare in profondità. Mai imporre.</span></div>
+    <div class="ref-item"><strong>3. Le difficoltà appartengono al cliente.</strong> <span>Il coach non interpreta. Chiede: "Cosa significa questo per te?"</span></div>
+    <div class="ref-item"><strong>4. I segni del passato sono anche risorse.</strong> <span>Esperienze difficili = vulnerabilità + fonte di resilienza. Dualità.</span></div>
+    <div class="ref-item"><strong>5. Ogni fine è un inizio.</strong> <span>Il fallimento non chiude, apre. Ogni battuta d'arresto rivela informazione e crea possibilità.</span></div>
+    <div class="ref-item"><strong>6. Le parole definiscono, i numeri riducono.</strong> <span>Descrivi in parole, frasi, immagini. Mai punteggi o scale identitarie.</span></div>
+  </div>
+
+  <!-- STRUMENTI -->
+  <div class="ref-section">
+    <div class="ref-title">Glossario strumenti</div>
+    <div style="display: flex; gap: 3mm; font-size: 6.5pt; flex-wrap: wrap;">
+      <div style="flex: 1; min-width: 35mm;"><strong>Mappa</strong> <span style="color: #7A756F;">Documento centrale, cresce ogni sessione</span></div>
+      <div style="flex: 1; min-width: 35mm;"><strong>Tappe</strong> <span style="color: #7A756F;">Marcatori visivi di progresso, forma libera</span></div>
+      <div style="flex: 1; min-width: 35mm;"><strong>Patto</strong> <span style="color: #7A756F;">Accordo su come lavorare insieme</span></div>
+      <div style="flex: 1; min-width: 35mm;"><strong>Pausa</strong> <span style="color: #7A756F;">Segnale per fermarsi, senza spiegare</span></div>
+      <div style="flex: 1; min-width: 35mm;"><strong>Crocevia</strong> <span style="color: #7A756F;">Momento significativo che cambia la Mappa</span></div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="footer-left">Quest Coaching v3 / Cheat Sheet</div>
+    <div class="footer-right">PAGINA 2 / SESSIONE TIPO</div>
+  </div>
+</div>
+
+</body>
+</html>
