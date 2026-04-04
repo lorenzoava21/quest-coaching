@@ -64,7 +64,7 @@ Questi principi guidano ogni scelta di design del framework. Sono ispirati alla 
 
 2. **Il cliente sceglie il livello di esposizione.** In ogni momento, il cliente decide quanto rischiare, quanto andare in profondità, quanto esporsi. Il coach propone, il cliente sceglie. Mai imporre.
 
-3. **Le difficoltà appartengono al cliente.** Quando emerge un ostacolo, e il cliente che decide cosa significa per lui. Il coach non interpreta, non assegna significati. Chiede: "Cosa significa questo per te?"
+3. **Le difficoltà appartengono al cliente.** Quando emerge un ostacolo, è il cliente che decide cosa significa per lui. Il coach non interpreta, non assegna significati. Chiede: "Cosa significa questo per te?"
 
 4. **I segni del passato sono anche risorse.** Le esperienze difficili non sono solo vulnerabilità. Sono anche la fonte della resilienza. La Mappa del Personaggio le include come elementi duali.
 
@@ -138,7 +138,7 @@ Le connessioni #6, #11, #12, #14, #19, #20 e #21 sono state riscritte rispetto a
 
 Il nome "Quest Coaching" funziona in italiano e inglese, evoca immediatamente il viaggio, la missione e il gioco, ed è professionale senza essere infantile.
 
-> **Nota sulla proprieta del nome (verifica marzo 2026):** Esiste una "Quest Coaching" su LinkedIn (piccola realtà), è una piattaforma LMS chiamata "myQuest" che usa il termine "quest" per esperienze di training gamificate. Tuttavia, nessun framework strutturato di coaching professionale ICF-aligned con questo nome risulta registrato. Si consiglia comunque una verifica trademark formale prima del lancio commerciale. Alternative di backup: "Quest-Based Coaching", "The Quest Framework", "Percorso Quest".
+> **Nota sulla proprietà del nome (verifica marzo 2026):** Esiste una "Quest Coaching" su LinkedIn (piccola realtà), è una piattaforma LMS chiamata "myQuest" che usa il termine "quest" per esperienze di training gamificate. Tuttavia, nessun framework strutturato di coaching professionale ICF-aligned con questo nome risulta registrato. Si consiglia comunque una verifica trademark formale prima del lancio commerciale. Alternative di backup: "Quest-Based Coaching", "The Quest Framework", "Percorso Quest".
 
 ---
 
@@ -193,7 +193,7 @@ La sessione tipo segue un arco in **4 fasi in 60 minuti**, ispirato alla struttu
 - Co-creare azioni concrete (ICF Comp. 7-8)
 - Formulare come Implementation Intentions (Gollwitzer): "Quando [situazione], allora [comportamento]"
 - Aggiornare le Tappe (il cliente segna fisicamente il progresso)
-- Verificare se questo è stato un **Crocevia**: "C'è qualcosa che è cambiato nella tua Mappa oggi?" Se si, il cliente aggiorna la Mappa: un nuovo Tratto, un Segno rielaborato, un Fuoco scoperto.
+- Verificare se questo è stato un **Crocevia**: "C'è qualcosa che è cambiato nella tua Mappa oggi?" Se sì, il cliente aggiorna la Mappa: un nuovo Tratto, un Segno rielaborato, un Fuoco scoperto.
 - "Se dovessi dare un titolo a questa sessione, quale sarebbe?"
 - Stelle e Desideri: "Cosa ha funzionato? Cosa vorresti di più la prossima volta?"
 
@@ -240,7 +240,7 @@ Forme possibili:
 - Una mappa con tappe da raggiungere
 - Qualsiasi altra forma che abbia senso per il cliente
 
-Ogni azione concreta viene segnata fisicamente dal cliente. Il progresso è visibile è tattile. Non serve sapere in anticipo cosa riempira ogni segmento: si scopre sessione dopo sessione.
+Ogni azione concreta viene segnata fisicamente dal cliente. Il progresso è visibile e tattile. Non serve sapere in anticipo cosa riempirà ogni segmento: si scopre sessione dopo sessione.
 
 Quando le Tappe si completano: celebrazione e definizione della prossima Direzione.
 
@@ -251,7 +251,7 @@ Quando le Tappe si completano: celebrazione e definizione della prossima Direzio
 Mazzo di carte con prompt casuali per rompere pattern e generare insight inaspettati. Tre tipi:
 
 - **Carte Azione + Tema** (ispirate a Ironsworn): combinazioni come "Rivela + Paura", "Esplora + Connessione", "Abbandona + Controllo". Il cliente interpreta liberamente.
-- **Carte Prospettiva:** "Il tuo mentore", "Il tuo critico interiore", "Il tuo se di 80 anni", "Un bambino di 5 anni". Cambio di punto di vista forzato.
+- **Carte Prospettiva:** "Il tuo mentore", "Il tuo critico interiore", "Il tuo sé di 80 anni", "Un bambino di 5 anni". Cambio di punto di vista forzato.
 - **Carte Sfida:** "Qual è la cosa che stai evitando?", "Cosa diresti se non avessi paura?", "Di cosa hai bisogno che non stai chiedendo?"
 
 *Uso:* quando la conversazione si arena o diventa troppo razionale. "Pesca una carta. Cosa ti suggerisce?"
@@ -274,7 +274,7 @@ Quando il cliente non raggiunge un risultato atteso:
 - "Come cambia la Mappa adesso?"
 - "Quale nuova possibilità si è aperta?"
 
-Questo reframe è strutturale, non cosmetico. Il sistema stesso comunica che la crescita non è lineare. Ogni fine e, letteralmente, un inizio.
+Questo reframe è strutturale, non cosmetico. Il sistema stesso comunica che la crescita non è lineare. Ogni fine è, letteralmente, un inizio.
 
 > **Nota sugli strumenti integrati (non separati):** La Narrazione in 3a Persona e i Safety Tools (Pausa, Confini) non sono strumenti separati ma principi integrati nella conduzione della sessione (v. Fase 2 e Fase 3). La narrazione in 3a persona è una tecnica di coaching basata su Kross et al. (2014) e Grossmann & Kross (2014, Solomon's Paradox); la Pausa e i Confini sono condizioni necessarie non-opzionali introdotte nella Session Zero.
 
@@ -293,7 +293,7 @@ Il livello si determina nella Session Zero attraverso conversazione. Il cliente 
 | Termine v3 | Cosa sostituisce | Significato |
 |------------|-----------------|-------------|
 | **Mappa** | Scheda Personaggio | Il documento centrale del cliente. Non è statica: cresce e cambia |
-| **Tratti** | Aspetti (Fate) | Parole o frasi brevi che descrivono chi e il cliente |
+| **Tratti** | Aspetti (Fate) | Parole o frasi brevi che descrivono chi è il cliente |
 | **Segni** | Cicatrici / Ombre | Esperienze che hanno lasciato un'impronta. Dualità: sia vulnerabilità che forza |
 | **Fuochi** | Forze signature (VIA) | Le qualità che si accendono quando il cliente è nel suo elemento |
 | **Direzione** | Quest / Giuramento | L'obiettivo del percorso, formulato come intenzione, non come KPI |
@@ -310,7 +310,7 @@ Il livello si determina nella Session Zero attraverso conversazione. Il cliente 
 #### Chi beneficia di più
 
 **Target primario:**
-- **Eta 25-45**, familiarita con giochi (videogiochi, board games, TTRPG) anche minima
+- **Età 25-45**, familiarità con giochi (videogiochi, board games, TTRPG) anche minima
 - **Creativi e professionisti digitali:** designer, developer, scrittori, marketer - già abituati al linguaggio del game design
 - **Professionisti in transizione:** cambio carriera, promozione, startup - cercano un approccio coinvolgente per navigare l'incertezza
 - **Gamer consapevoli:** giocatori di TTRPG o videogiochi che vogliono applicare le competenze del gioco alla crescita personale
@@ -324,10 +324,10 @@ Il livello si determina nella Session Zero attraverso conversazione. Il cliente 
 #### Controindicazioni e limiti etici
 
 **NON adatto per:**
-- **Patologie psichiatriche attive** (depressione grave, disturbi di personalita, psicosi, dipendenze) - necessitàno terapia clinica
+- **Patologie psichiatriche attive** (depressione grave, disturbi di personalità, psicosi, dipendenze) - necessitano terapia clinica
 - **Trauma recente non elaborato** - il roleplay può riattivare senza contenimento clinico adeguato
 - **Persone con confusione realtà/fantasia** - il doppio cerchio magico richiede capacità di distinguere narrazione e vita reale
-- **Chi non ha alcuna affinita con il gioco** - ma il Livello 1 (leggero) può funzionare anche con loro, se non si forza il linguaggio
+- **Chi non ha alcuna affinità con il gioco** - ma il Livello 1 (leggero) può funzionare anche con loro, se non si forza il linguaggio
 
 **Limiti etici fondamentali:**
 - Il Quest Coach NON è un terapeuta. Deve riconoscere quando un referral a un professionista della salute mentale è necessario (Codice Etico ICF)
@@ -357,7 +357,7 @@ Il livello si determina nella Session Zero attraverso conversazione. Il cliente 
 | **Struttura narrativa** | Emergente | Progettata (Direzione, Tappe, Crocevia, arco narrativo) |
 | **Gestione della resistenza** | Sfida verbale | "Ogni fine è un inizio", domande di profondità, esternalizzazione |
 | **Sicurezza psicologica** | Contratto + fiducia | Patto + fiducia + Pausa + Confini espliciti |
-| **Fisicita** | Rara | Core: la Mappa si tocca, si scrive, si aggiorna con le mani |
+| **Fisicità** | Rara | Core: la Mappa si tocca, si scrive, si aggiorna con le mani |
 | **Senso di avventura** | Raro | Core del framework |
 
 #### Nicchie di mercato
@@ -375,7 +375,7 @@ Il livello si determina nella Session Zero attraverso conversazione. Il cliente 
 
 **3. Gamer e appassionati TTRPG**
 - Target diretto e appassionato
-- Gia comprendono le meccaniche narrative
+- Già comprendono le meccaniche narrative
 - Messaging: "Le competenze che hai sviluppato giocando? Funzionano nella vita reale"
 
 **4. Manager e leader**
@@ -398,7 +398,7 @@ Il livello si determina nella Session Zero attraverso conversazione. Il cliente 
 - **Not The End** (Pustorino, Airoldi, Serena / Fumble GDR, 2020) - ispirazione per i principi di design: fisicità degli strumenti, agency del giocatore, il fallimento come inizio. Nessuna meccanica copiata.
 - **Blades in the Dark** (Harper, 2017) - concetto originale dei Clock, da cui le Tappe prendono ispirazione evolvendosi in forma libera
 - **Fate** (Hicks, Engard / Evil Hat, 2013) - ispirazione per i tratti narrativi
-- **Ironsworn** (Tomkin, 2018) - ispirazione per il sistema oracolo è l'impegno emotivo verso gli obiettivi
+- **Ironsworn** (Tomkin, 2018) - ispirazione per il sistema oracolo e l'impegno emotivo verso gli obiettivi
 
 #### Coaching e psicologia
 - **ICF Core Competencies** (2019) - fondamento professionale del coaching
