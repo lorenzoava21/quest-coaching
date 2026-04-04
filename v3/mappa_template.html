@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Mappa del Personaggio - Quest Coaching</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400&display=swap');
+
+  @page {
+    size: A3 landscape;
+    margin: 0;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    width: 420mm;
+    height: 297mm;
+    background: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    overflow: hidden;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    width: 420mm;
+    height: 297mm;
+    position: relative;
+    padding: 18mm;
+  }
+
+  /* Subtle grid of dots */
+  .dot-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: none;
+    opacity: 0;
+    z-index: 0;
+  }
+
+  /* Zone areas - very subtle backgrounds */
+  .zone {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .zone-label-main {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 16pt;
+    color: #7A756F;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+
+  .zone-label-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 13pt;
+    color: #A09A94;
+    letter-spacing: 0.02em;
+    margin-top: 2mm;
+  }
+
+  /* Zone: Chi Sono (top center) */
+  .zone-chi-sono {
+    top: 18mm;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Zone: Cosa Mi Accende (left middle) */
+  .zone-fuochi {
+    top: 72mm;
+    left: 24mm;
+  }
+
+  /* Zone: Cosa Mi Ha Segnato (right middle) */
+  .zone-segni {
+    top: 72mm;
+    right: 24mm;
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  /* Zone: Chi Cammina Con Me (left bottom) */
+  .zone-legami {
+    top: 168mm;
+    left: 24mm;
+  }
+
+  /* Zone: Cosa Non Negozio (right bottom) */
+  .zone-valori {
+    top: 168mm;
+    right: 24mm;
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  /* Zone: Dove Vado (bottom center) */
+  .zone-direzione {
+    top: 248mm;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Center element - removed */
+
+  /* Subtle zone boundaries - very light curved lines */
+  .zone-hint {
+    position: absolute;
+    z-index: 0;
+  }
+
+  /* Top area subtle line */
+  .hint-top {
+    top: 62mm;
+    left: 15%;
+    width: 70%;
+    height: 0;
+    border-bottom: 0.3px solid #E8E5E0;
+  }
+
+  /* Bottom area subtle line */
+  .hint-bottom {
+    top: 160mm;
+    left: 15%;
+    width: 70%;
+    height: 0;
+    border-top: 0.3px solid #E8E5E0;
+  }
+
+  /* Vertical subtle line */
+  .hint-vertical {
+    top: 25%;
+    left: 50%;
+    width: 0;
+    height: 50%;
+    border-left: 0.3px solid #E8E5E0;
+  }
+
+  /* Branding */
+  .branding {
+    position: absolute;
+    bottom: 8mm;
+    right: 12mm;
+    z-index: 2;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 6.5pt;
+    color: #C5C0B8;
+    letter-spacing: 0.1em;
+  }
+
+  .branding-left {
+    position: absolute;
+    bottom: 8mm;
+    left: 12mm;
+    z-index: 2;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 7pt;
+    color: #C5C0B8;
+  }
+
+  /* Date field */
+  .date-field {
+    position: absolute;
+    top: 8mm;
+    right: 12mm;
+    z-index: 2;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 7pt;
+    color: #B5AFA6;
+  }
+
+  .date-field .line {
+    display: inline-block;
+    width: 30mm;
+    border-bottom: 0.5px solid #D0CBC3;
+    margin-left: 2mm;
+  }
+
+  /* Name field */
+  .name-field {
+    position: absolute;
+    top: 8mm;
+    left: 12mm;
+    z-index: 2;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 7pt;
+    color: #B5AFA6;
+  }
+
+  .name-field .line {
+    display: inline-block;
+    width: 50mm;
+    border-bottom: 0.5px solid #D0CBC3;
+    margin-left: 2mm;
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Dot grid background -->
+  <div class="dot-grid"></div>
+
+  <!-- Name and date -->
+  <div class="name-field">nome <span class="line"></span></div>
+  <div class="date-field">data <span class="line"></span></div>
+
+  <!-- Subtle zone separators -->
+  <div class="zone-hint hint-top"></div>
+  <div class="zone-hint hint-bottom"></div>
+  <div class="zone-hint hint-vertical"></div>
+
+  <!-- Center element removed -->
+
+  <!-- ZONES -->
+
+  <!-- Tratti (top center) -->
+  <div class="zone zone-chi-sono">
+    <div class="zone-label-main">Tratti</div>
+    <div class="zone-label-sub">chi sono</div>
+  </div>
+
+  <!-- Fuochi (left middle) -->
+  <div class="zone zone-fuochi">
+    <div class="zone-label-main">Fuochi</div>
+    <div class="zone-label-sub">cosa mi accende</div>
+  </div>
+
+  <!-- Segni (right middle) -->
+  <div class="zone zone-segni">
+    <div class="zone-label-main">Segni</div>
+    <div class="zone-label-sub">cosa mi ha segnato</div>
+  </div>
+
+  <!-- Legami (left bottom) -->
+  <div class="zone zone-legami">
+    <div class="zone-label-main">Legami</div>
+    <div class="zone-label-sub">chi cammina con me</div>
+  </div>
+
+  <!-- Valori (right bottom) -->
+  <div class="zone zone-valori">
+    <div class="zone-label-main">Valori</div>
+    <div class="zone-label-sub">cosa non negozio</div>
+  </div>
+
+  <!-- Direzione (bottom center) -->
+  <div class="zone zone-direzione">
+    <div class="zone-label-main">Direzione</div>
+    <div class="zone-label-sub">dove vado</div>
+  </div>
+
+  <!-- Branding -->
+  <div class="branding-left">Mappa del Personaggio</div>
+  <div class="branding">QUEST COACHING</div>
+
+</div>
+</body>
+</html>

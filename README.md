@@ -89,6 +89,24 @@ Coaching/
 
 **Totale: 32 file attivi, ~25.000+ righe di contenuto operativo.**
 
+### Ricerca di contesto (aprile 2026)
+
+```
+ricerca/
+├── SINTESI_RICERCA_COMPLETA.md      ← Documento master: executive summary, 7 aree,
+│                                       matrice rischi/opportunita, piano d'azione 90 giorni
+├── report_mercato_2026.md           ← Mercato globale/Italia + 12 business model analizzati
+├── report_normativo_target.md       ← Normativa italiana + GDPR + marchio + profilo target
+├── evidenze_2024_2026.md            ← 20 studi scientifici nuovi (2024-2026) + 6 gap letteratura
+├── report_rischi_opportunita.md     ← 8 rischi (4 critici) + 8 opportunita con step concreti
+│
+├── (file preesistenti)
+├── step1_game_design.md
+├── step2_coaching.md
+├── analisi_critica.md
+└── analisi_competitiva.md
+```
+
 ---
 
 ## I 5 Principi del Quest Coaching (v2.0)
@@ -132,30 +150,30 @@ Coaching/
 | Validazione | Guida Interviste | done |
 | Validazione | Protocollo Studio Pilota | done |
 | Workshop | Workshop Introduttivo 2.5 ore | done |
+| Ricerca | Stato mercato globale/Italia (80+ fonti) | done |
+| Ricerca | Contesto normativo + GDPR + marchio | done |
+| Ricerca | Evidenze scientifiche 2024-2026 (20 studi nuovi) | done |
+| Ricerca | 8 rischi emergenti + 8 opportunita | done |
+| Ricerca | Sintesi completa + piano 90 giorni | done |
 
 ---
 
-## Prossimi passi (azioni umane richieste)
+## Piano d'azione 90 giorni (aprile-giugno 2026)
 
-### Immediati (settimana 1-2)
-- [ ] Leggere il Manuale Quest Coach (`manuale_e_moduli/manuale_v1.md`)
-- [ ] Stampare la Scheda Personaggio HTML e testarla fisicamente
-- [ ] Completare il VIA Survey personale su viacharacter.org
-- [ ] Registrare trademark "Quest Coaching" presso UIBM (guida in `business/proprieta_intellettuale/`)
+> Da `ricerca/SINTESI_RICERCA_COMPLETA.md` - aggiornato 3 aprile 2026
 
-### Validazione (settimane 3-6)
-- [ ] Condurre 10-15 interviste di validazione (guida in `validazione/interviste/`)
-- [ ] Analizzare risultati con framework GO/PIVOT/STOP
-- [ ] Decidere se procedere, pivotare o fermarsi
+### Settimana 1-4 (aprile)
+- [ ] **Prima sessione pilota** con volontario (Kit Minimo: Scheda + Clock + Fail Forward)
+- [ ] **Primo post LinkedIn** che racconta il progetto
+- [ ] Contattare 3 scuole ICF per percorso certificazione ACC
+- [ ] Registrare trademark UIBM (~135 EUR, Classe 41)
+- [ ] Definire strategia finanziaria (fonte reddito alternativa per 12-18 mesi)
 
-### Pilota (mesi 2-4)
-- [ ] Reclutare 3-5 beta-tester
-- [ ] Condurre Session Zero + 8 sessioni per ciascuno
-- [ ] Raccogliere dati con questionari (protocollo in `validazione/studio_pilota/`)
-- [ ] Iterare framework e strumenti
+### Mese 2 (maggio)
+- [ ] Lanciare newsletter Substack (bisettimanale)
+- [ ] Reclutare partecipanti studio pilota (informativa GDPR + consenso)
+- [ ] Creare modulo corporate (workshop mezza giornata, linguaggio adattato)
 
-### Lancio (mesi 4-6)
-- [ ] Mettere online la landing page
-- [ ] Pubblicare i primi 4 articoli del piano editoriale
-- [ ] Condurre il primo workshop introduttivo
-- [ ] Attivare le prime partnership (guida in `business/partnership/`)
+### Mese 3 (giugno)
+- [ ] Aprire community Discord (30 membri in 60 giorni)
+- [ ] Iterare framework sulla base delle prime 10-15 sessioni reali
